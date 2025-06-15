@@ -71,13 +71,13 @@
         .chat-bubble.user { background-color: #3C5BFF; color: white; align-self: flex-end;}
         .chat-bubble.gemini { background-color: #F3F4F6; color: #1F2937; align-self: flex-start; }
         
-        /* 專案圖片占位符 */
+        /* 專案圖片/影片占位符 */
         .project-placeholder {
             border: 2px dashed #000;
             background-color: #f0f0f0;
             width: 100%;
             height: 100%;
-            min-height: 250px;
+            min-height: 200px;
             border-radius: 4px;
             display: flex;
             justify-content: center;
@@ -85,6 +85,28 @@
             text-align: center;
             color: #6b7280;
             font-size: 0.875rem;
+            overflow: hidden;
+        }
+        .project-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            border: 2px solid black;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
 
         .loading-dots span {
@@ -160,7 +182,7 @@
                     </div>
                     <div class="space-y-4">
                         <div class="project-placeholder">
-                            <p class="p-4">【請在此處放置您的專案圖片】<br>例如：您開發的爬蟲程式碼截圖、<br>或使用AI工具優化流程的示意圖。</p>
+                            <img src="https://raw.githubusercontent.com/tinafu/linego-portfolio/main/images/benqspecextraction.png">
                         </div>
                         <div>
                             <h4 class="font-bold">成果與學習 (Result)：</h4>
@@ -188,27 +210,28 @@
                         </div>
                         <div>
                             <h4 class="font-bold">背景 (Situation)：</h4>
-                            <p class="text-sm text-gray-600">團隊目標是提升 LINE 官方貼圖相關產品的能見度與用戶參與度。</p>
+                            <p class="text-sm text-gray-600">團隊目標是提升 LINE 官方貼圖相關產品的能見度與用戶參與度，並透過多元行銷活動提升銷售。</p>
                         </div>
                         <div>
                             <h4 class="font-bold">執行方法 (Action)：</h4>
                              <ul class="list-disc list-inside space-y-1 text-sm text-gray-600">
-                                <li><strong>用戶意見分析：</strong> 定期收集用戶回饋，將其質化與量化，用以優化行銷活動切角。</li>
-                                <li><strong>社群內容策略：</strong> 規劃創意內容，獨立製作超過 200 篇推廣貼文，提升用戶互動。</li>
+                                <li><strong>內容與活動企劃：</strong> 規劃並執行「主編精選」、星座系列等行銷主題，設計 OAP 內容以提升用戶互動與點擊率。</li>
+                                <li><strong>社群內容經營：</strong> 製作超過 200 則貼文、迷因、資訊圖表及 Reels 短影音，並管理 LINE 所有社群平台。</li>
+                                <li><strong>使用者洞察與優化：</strong> 收集用戶回饋並進行個案分析，追蹤活動成效，並持續優化行銷策略以提升瀏覽、銷售與留存。</li>
                             </ul>
                         </div>
                     </div>
                     <div class="space-y-4">
                         <div class="project-placeholder">
-                             <p class="p-4">【請在此處放置您的專案圖片】<br>例如：您製作的最成功的IG貼文截圖、<br>或是用戶回饋的分析圖表。</p>
+                             <p class="p-4">【請在此處放置您的專案圖片】<br>例如：您作品集中的 OAP 內容、<br>社群貼文或 Reels 短影音截圖。</p>
                         </div>
                         <div>
                             <h4 class="font-bold">成果與學習 (Result)：</h4>
                             <div class="text-center bg-green-200 p-4 my-2 rounded-lg border-2 border-black">
-                                <p class="text-sm">Instagram 粉絲增長</p>
+                                <p class="text-sm">Instagram 粉絲數增長</p>
                                 <p class="text-4xl font-black">+<span id="counter">100</span>% (13K → 27K)</p>
                             </div>
-                            <p class="text-sm text-gray-600">深刻體會「以用戶為中心」的重要性，並學會將用戶洞察轉化為真實的商業價值。</p>
+                             <p class="text-sm text-gray-600">深刻體會「以用戶為中心」的重要性，並學習到如何透過數據追蹤與質化回饋，制定有效的內容策略，並為產品帶來真實的商業價值。</p>
                         </div>
                     </div>
                 </div>
@@ -221,7 +244,7 @@
                 <div class="window-header"><span>Competition_AI_Award.exe</span></div>
                 <div class="p-8 grid md:grid-cols-2 gap-8 items-start">
                     <div class="space-y-4">
-                        <h2 class="text-2xl font-black">AI Junior Award：AI 安心求助，報案無障礙</h2>
+                        <h2 class="text-2xl font-black">AI Junior Award：AI 安心求助</h2>
                         <div>
                             <h4 class="font-bold">專案角色：</h4>
                             <p class="text-sm text-gray-600">使用者體驗設計與產品規劃</p>
@@ -241,23 +264,37 @@
                     </div>
                     <div class="space-y-4">
                         <div class="project-placeholder">
-                             <p class="p-4">【請在此處放置您的專案圖片】<br>例如：AI Award 簡報中的<br>「技術架構圖」或「成效驗證」圖表。</p>
+                             <img src="https://storage.googleapis.com/gemini-prod-us-east1-9d29f339-385a-4933-a360-3f4354c4a5f3/1.jpg" alt="AI Award 專案主視覺">
                         </div>
                         <div class="project-placeholder">
-                             <p class="p-4">【請在此處放置您的獎狀圖片】<br>例如：AI Junior Award 銅獎獎狀。</p>
+                             <img src="https://storage.googleapis.com/gemini-prod-us-east1-9d29f339-385a-4933-a360-3f4354c4a5f3/35.jpg" alt="AI Award 預期效益圖">
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+        
+        <!-- Slide 6: 專案經驗 (三) | AI Junior Award Demo -->
+        <section class="slide">
+             <div class="window w-full max-w-4xl fade-in-item">
+                <div class="window-header"><span>Demo_Video.mp4</span></div>
+                 <div class="p-8">
+                     <h2 class="text-2xl font-black mb-4 text-center">專案 Demo 影片</h2>
+                     <div class="video-container">
+                        <!-- 請將下方的 src 換成您的 YouTube 影片嵌入連結 -->
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                     </div>
+                 </div>
+            </div>
+        </section>
 
-        <!-- Slide 6: 專案經驗 (四) | InnoConnect+ -->
+        <!-- Slide 7: 專案經驗 (四) | InnoConnect+ -->
         <section class="slide">
              <div class="window w-full max-w-5xl fade-in-item">
                 <div class="window-header"><span>Competition_InnoConnect.exe</span></div>
                 <div class="p-8 grid md:grid-cols-2 gap-8 items-start">
                     <div class="space-y-4">
-                        <h2 class="text-2xl font-black">InnoConnect+：情感串咖啡，連結世代心</h2>
+                        <h2 class="text-2xl font-black">InnoConnect+：情感串咖啡</h2>
                         <div>
                             <h4 class="font-bold">專案角色：</h4>
                             <p class="text-sm text-gray-600">服務設計研究與產品企劃</p>
@@ -268,7 +305,7 @@
                         </div>
                         <div>
                             <h4 class="font-bold">我們的解法 (Action)：</h4>
-                             <p class="text-sm text-gray-600">以萊爾富「來送禮」服務為基礎，提出「萊愛曆」創新服務。透過雙鑽石設計流程，結合使用者訪談與質化分析，設計出整合情感日曆、客製化提醒與社群分享功能的服務，將送禮從單純交易轉化為可回憶的溫馨體驗。</p>
+                             <p class="text-sm text-gray-600">以萊爾富「來送禮」為基礎，提出「萊愛曆」創新服務概念。透過雙鑽石設計流程與使用者訪談，規劃整合「預約送禮」、「心情手札」、「一鍵炫耀」與多媒體卡片等功能的產品原型，將送禮從單純交易轉化為可回憶的溫馨體驗。</p>
                         </div>
                          <div>
                             <h4 class="font-bold">成果：</h4>
@@ -277,17 +314,17 @@
                     </div>
                     <div class="space-y-4">
                         <div class="project-placeholder">
-                             <p class="p-4">【請在此處放置您的專案圖片】<br>例如：InnoConnect 簡報中的<br>「服務產品原型」或「服務藍圖」。</p>
+                             <p class="p-4">【請在此處放置您的專案圖片】<br>例如：您提供的「萊愛曆」<br>服務原型 UI 截圖。</p>
                         </div>
                         <div class="project-placeholder">
-                            <p class="p-4">【請在此處放置您的獎狀/獎項證明】</p>
+                            <p class="p-4">【請在此處放置您的專案圖片】<br>例如：您提供的「利害關係人圖」。</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Slide 7: 我能如何貢獻 -->
+        <!-- Slide 8: 我能如何貢獻 -->
         <section class="slide">
             <div class="window w-full max-w-4xl fade-in-item">
                 <div class="window-header"><span>Contribution.md</span></div>
@@ -308,7 +345,7 @@
             </div>
         </section>
 
-        <!-- Slide 8: AI 互動問答 -->
+        <!-- Slide 9: AI 互動問答 -->
         <section class="slide">
              <div class="window w-full max-w-2xl h-[85vh] flex flex-col fade-in-item">
                 <div class="window-header">
@@ -329,7 +366,7 @@
             </div>
         </section>
         
-        <!-- Slide 9: 結尾 -->
+        <!-- Slide 10: 結尾 -->
         <section class="slide">
             <div class="window w-full max-w-md fade-in-item">
                 <div class="window-header"><span>Question</span></div>
@@ -349,7 +386,7 @@
         <button id="prevBtn" class="w-14 h-14 rounded-lg text-black bg-white border-2 border-black hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-[4px_4px_0px_#000]">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
         </button>
-        <div id="slide-counter" class="text-lg font-bold text-white bg-black px-4 py-3 rounded-lg">1 / 9</div>
+        <div id="slide-counter" class="text-lg font-bold text-white bg-black px-4 py-3 rounded-lg">1 / 10</div>
         <button id="nextBtn" class="w-14 h-14 rounded-lg text-black bg-white border-2 border-black hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-[4px_4px_0px_#000]">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
         </button>
@@ -405,7 +442,7 @@
                 else if (e.key === 'ArrowLeft') goToPrevSlide();
             });
 
-            const resumeContext = `傅鈺婷 (Tina Fu) 的履歷與專案摘要：學歷：國立政治大學 數位內容與科技碩士 (2024.09~2026.06), 輔仁大學 應用美術系 視覺傳達組 (畢業, GPA: 3.93/4.0). 實習經歷：1. BenQ APAC - 電商與數位行銷實習生 (2024.06-2025.01). 核心職責：規劃執行電子商務行銷活動，協調新品上架與庫存管理。關鍵技能：主動發現問題，為提升效率開發網頁爬蟲，並善用AI工具；使用Excel (VLOOKUP, 樞紐分析表) 分析購買轉換率(CVR)、活動績效。主要成就：成功提升馬新市場的購買轉換率，優化跨部門協作流程。 2. LINE Taiwan - 貼圖行銷團隊實習生 (2022.09-2024.04). 核心職責：規劃行銷活動，管理官方社群，進行市場分析。關鍵技能：用戶回饋分析，社群內容策略。主要成就：將官方 Instagram 追蹤數從 13K 提升至 27K (增長超過100%)，製作超過200篇貼文。 競賽專案： 1. AI Junior Award (銅獎): 專案名為「AI 安心求助，報案無障礙」。為解決性騷擾/性侵受害者報案率低的社會問題，規劃一款具同理心、高隱私性的 AI 報案助手。運用 RAG 技術與本地化部署，引導受害者梳理案情、生成報告書，並提供情緒支持。 2. InnoConnect+ (特別獎): 專案名為「情感串咖啡，連結世代心」。為解決超商送禮服務缺乏情感溫度的問題，以萊爾富「來送禮」為基礎提出「萊愛曆」創新服務。透過雙鑽石設計流程與使用者訪談，設計出整合情感日曆、客製化提醒與社群分享功能的服務。 其他技能：語言(TOEIC 815), 工具(Figma, Google Analytics, Adobe Suite), 程式(Python, Javascript).`;
+            const resumeContext = `傅鈺婷 (Tina Fu) 的履歷與專案摘要：學歷：國立政治大學 數位內容與科技碩士 (2024.09~2026.06), 輔仁大學 應用美術系 視覺傳達組 (畢業, GPA: 3.93/4.0). 實習經歷：1. BenQ APAC - 電商與數位行銷實習生 (2024.06-2025.01). 核心職責：規劃執行電子商務行銷活動，協調新品上架與庫存管理。關鍵技能：主動發現問題，為提升效率開發網頁爬蟲，並善用AI工具；使用Excel (VLOOKUP, 樞紐分析表) 分析購買轉換率(CVR)、活動績效。主要成就：成功提升馬新市場的購買轉換率，優化跨部門協作流程。 2. LINE Taiwan - 貼圖行銷團隊實習生 (2022.09-2024.04). 核心職責：規劃與執行「主編精選」、星座系列等行銷主題，設計 OAP 內容，管理所有社群平台並製作超過200則貼文、迷因、資訊圖表與Reels短影音。關鍵技能：用戶回饋質化與量化分析，數據追蹤，並根據成效優化行銷策略以提升瀏覽、銷售與留存。主要成就：將官方 Instagram 追蹤數從 13K 提升至 27K (增長超過100%)。 競賽專案： 1. AI Junior Award (銅獎): 專案名為「AI 安心求助，報案無障礙」。為解決性騷擾/性侵受害者報案率低的社會問題，規劃一款具同理心、高隱私性的 AI 報案助手。運用 RAG 技術與本地化部署，引導受害者梳理案情、生成報告書，並提供情緒支持。 2. InnoConnect+ (特別獎): 專案名為「情感串咖啡，連結世代心」。為解決超商送禮服務缺乏情感溫度的問題，以萊爾富「來送禮」為基礎提出「萊愛曆」創新服務概念。透過雙鑽石設計流程與使用者訪談，規劃整合「預約送禮」、「心情手札」、「一鍵炫耀」與多媒體卡片等功能的產品原型。 其他技能：語言(TOEIC 815), 工具(Figma, Google Analytics, Adobe Suite), 程式(Python, Javascript).`;
 
             async function callGeminiAPI(prompt) {
                 const fullPrompt = `${resumeContext}\n\n你是一位專業且熱情的 AI 履歷助理，代表傅鈺婷本人。你的任務是根據以上提供的履歷與專案摘要，只能使用這些資訊來回答問題。請用親切、自信的第一人稱口吻（例如：在我於...的實習中，我負責...）來回答。如果問題超出資訊範圍，請委婉地表示：「這個問題超出我目前能回答的範圍，但在面試中我很樂意親自與您分享更多細節。」\n\n面試官的問題是：「${prompt}」\n\n你的回答：`;
