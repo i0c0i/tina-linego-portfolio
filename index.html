@@ -73,8 +73,6 @@
         
         /* 專案圖片/影片占位符 */
         .project-placeholder {
-            border: 2px dashed #000;
-            background-color: #f0f0f0;
             width: 100%;
             height: 100%;
             min-height: 200px;
@@ -83,14 +81,13 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            color: #6b7280;
-            font-size: 0.875rem;
             overflow: hidden;
+            background-color: #f0f0f0; /* 作為圖片載入前的底色 */
         }
         .project-placeholder img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain; /* 改為 contain 以完整顯示圖片 */
         }
         .video-container {
             position: relative;
@@ -182,7 +179,7 @@
                     </div>
                     <div class="space-y-4">
                         <div class="project-placeholder">
-                            <img src="https://raw.githubusercontent.com/i0c0i/tina-linego-portfolio/main/images/benqspecextraction.png">
+                             <img src="https://raw.githubusercontent.com/i0c0i/tina-linego-portfolio/main/images/benqspecextraction.png" alt="BenQ 爬蟲專案示意圖">
                         </div>
                         <div>
                             <h4 class="font-bold">成果與學習 (Result)：</h4>
@@ -223,7 +220,7 @@
                     </div>
                     <div class="space-y-4">
                         <div class="project-placeholder">
-                             <p class="p-4">【請在此處放置您的專案圖片】<br>例如：您作品集中的 OAP 內容、<br>社群貼文或 Reels 短影音截圖。</p>
+                            <p class="p-4">【請在此處放置您的專案圖片】<br>例如：您作品集中的 OAP 內容、<br>社群貼文或 Reels 短影音截圖。</p>
                         </div>
                         <div>
                             <h4 class="font-bold">成果與學習 (Result)：</h4>
