@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>傅鈺婷 (Tina Fu) - LINE GO 產品實習生應徵簡報 (故事版)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* 自定義樣式和動畫 */
+        body {
+            font-family: 'Inter', 'Noto Sans TC', sans-serif;
+            overflow: hidden;
+            background-color: #3C5BFF;
+        }
+
+        /* 投影片容器 */
+        .slide {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            padding: 2rem;
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+            opacity: 0;
+            transform: scale(0.95);
+            pointer-events: none;
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: scale(1);
+            pointer-events: auto;
+        }
+        
+        /* 元素淡入動畫 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in-item {
+            animation: fadeIn 0.7s ease-out forwards;
+            opacity: 0;
+        }
+        
+        /* 視窗樣式 */
+        .window {
+            background-color: white;
+            border: 2px solid #000;
+            box-shadow: 6px 6px 0px #000;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .window-header {
+            background-color: #3C5BFF;
+            color: white;
+            padding: 0.5rem 1rem;
+            font-weight: 700;
+            border-bottom: 2px solid #000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .window-controls { display: flex; gap: 0.5rem; }
+        .window-control { width: 14px; height: 14px; border: 2px solid #000; border-radius: 50%; }
+        
+        /* AI Chat 樣式 */
+        #chat-window { scrollbar-width: none; -ms-overflow-style: none; }
+        #chat-window::-webkit-scrollbar { display: none; }
+        .chat-bubble { max-width: 85%; padding: 0.75rem 1rem; border-radius: 1rem; }
+        .chat-bubble.user { background-color: #3C5BFF; color: white; align-self: flex-end;}
+        .chat-bubble.gemini { background-color: #F3F4F6; color: #1F2937; align-self: flex-start; }
+        
+        /* 專案圖片占位符 */
+        .project-placeholder {
+            border: 2px dashed #000;
+            background-color: #f0f0f0;
+            width: 100%;
+            height: 100%;
+            min-height: 250px;
+            border-radius: 4px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+
+        .loading-dots span {
+            animation: blink 1.4s infinite both;
+            height: 8px; width: 8px; background-color: #9ca3af;
+            display: inline-block; border-radius: 50%;
+        }
+        .loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+        .loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes blink { 0% { opacity: 0.2; } 20% { opacity: 1; } 100% { opacity: 0.2; } }
+    </style>
+</head>
+<body class="text-black">
+
+    <div id="presentation-container" class="relative w-full h-screen">
+        <!-- Slide 1: 封面頁 -->
+        <section class="slide active">
+            <div class="text-center text-white">
+                <div class="inline-block bg-white text-black p-4 border-4 border-black shadow-[8px_8px_0px_#000] fade-in-item">
+                    <h1 class="text-5xl md:text-8xl font-black">PORTFOLIO.|</h1>
+                </div>
+                <p class="mt-8 text-xl font-bold fade-in-item" style="animation-delay: 0.2s;">傅鈺婷 (Tina Fu) | 產品實習生應徵簡報</p>
+            </div>
+        </section>
+        
+        <!-- Slide 2: 個人檔案 -->
+        <section class="slide">
+            <div class="window w-full max-w-4xl fade-in-item">
+                <div class="window-header"><span>Profile.txt</span></div>
+                <div class="p-8 grid md:grid-cols-3 gap-8">
+                    <div class="md:col-span-1 text-center">
+                        <svg class="w-32 h-32 mx-auto mb-4" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="48" stroke="black" stroke-width="4"/><path d="M50 68C50 68 62.6387 62.4331 70.8193 68.8073C78.7397 75.0002 82 78 82 78" stroke="black" stroke-width="4" stroke-linecap="round"/><path d="M50 68C50 68 37.3613 62.4331 29.1807 68.8073C21.2603 75.0002 18 78 18 78" stroke="black" stroke-width="4" stroke-linecap="round"/><path d="M69.5 44C69.5 46.4853 67.4853 48.5 65 48.5C62.5147 48.5 60.5 46.4853 60.5 44C60.5 41.5147 62.5147 39.5 65 39.5C67.4853 39.5 69.5 41.5147 69.5 44Z" fill="black"/><path d="M39.5 44C39.5 46.4853 37.4853 48.5 35 48.5C32.5147 48.5 30.5 46.4853 30.5 44C30.5 41.5147 32.5147 39.5 35 39.5C37.4853 39.5 39.5 41.5147 39.5 44Z" fill="black"/><path d="M35 83C41.0423 88.0837 58.9577 88.0837 65 83" stroke="black" stroke-width="4" stroke-linecap="round"/><path d="M50 68V83" stroke="black" stroke-width="4" stroke-linecap="round"/></svg>
+                        <h2 class="text-2xl font-bold">傅鈺婷</h2>
+                        <p class="text-gray-600">Tina Fu</p>
+                    </div>
+                    <div class="md:col-span-2">
+                        <h3 class="font-bold text-xl mb-4">關於我</h3>
+                        <p class="mb-6">我是鈺婷，一位數據與使用者並重的產品實踐者。具備在大型跨國團隊的協作經驗，擅長從數據與使用者回饋中洞察機會點，並透過專案管理能力將其化為具體成果。</p>
+                        <h3 class="font-bold text-xl mb-4">核心能力</h3>
+                        <div class="space-y-3">
+                            <p><strong>數據驅動的專案管理：</strong> 熟悉 Excel 數據分析，能有效協調跨部門團隊。</p>
+                            <p><strong>用戶導向的策略規劃：</strong> 擅長收集分析用戶回饋，轉化為行銷與產品策略。</p>
+                            <p><strong>高效的跨團隊溝通：</strong> 擁有在 BenQ 與 LINE 等企業的豐富協作經驗。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 3: 專案經驗 (一) | BenQ (詳細版) -->
+        <section class="slide">
+            <div class="window w-full max-w-5xl fade-in-item">
+                <div class="window-header"><span>Project_BenQ.exe</span></div>
+                <div class="p-8 grid md:grid-cols-2 gap-8 items-start">
+                    <div class="space-y-4">
+                        <h2 class="text-2xl font-black">BenQ：從數據到決策的電商營運</h2>
+                        <div>
+                            <h4 class="font-bold">我的角色：</h4>
+                            <p class="text-sm text-gray-600">亞太區電商與數位行銷實習生</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">背景 (Situation)：</h4>
+                            <p class="text-sm text-gray-600">面對亞太區複雜市場，需同步管理新品上架、行銷活動，並提升銷售表現。</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">執行方法 (Action)：</h4>
+                             <ul class="list-disc list-inside space-y-1 text-sm text-gray-600">
+                                <li><strong>主動優化：</strong> 為提升效率，主動開發網頁爬蟲程式自動抓取資訊，並善用 AI 工具處理繁瑣任務。</li>
+                                <li><strong>數據分析：</strong> 使用 Excel (VLOOKUP, 樞紐分析) 分析CVR與活動績效，提供可行性洞察。</li>
+                                <li><strong>流程管理：</strong> 建立跨團隊溝通管道，管理新品上架時程。</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="project-placeholder">
+                            <p class="p-4">【請在此處放置您的專案圖片】<br>例如：您開發的爬蟲程式碼截圖、<br>或使用AI工具優化流程的示意圖。</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">成果與學習 (Result)：</h4>
+                             <ul class="list-disc list-inside space-y-1 text-sm text-gray-600">
+                                <li>成功提升馬來西亞與新加坡市場購買轉換率。</li>
+                                <li>優化跨國、跨部門的專案協作流程。</li>
+                                <li>學習到如何從繁瑣工作中發現問題，並利用技術工具解決，而不只是被動接受任務。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Slide 4: 專案經驗 (二) | LINE (詳細版) -->
+        <section class="slide">
+             <div class="window w-full max-w-5xl fade-in-item">
+                <div class="window-header"><span>Project_LINE.exe</span></div>
+                <div class="p-8 grid md:grid-cols-2 gap-8 items-start">
+                    <div class="space-y-4">
+                        <h2 class="text-2xl font-black">LINE：從用戶到增長的社群實踐</h2>
+                        <div>
+                            <h4 class="font-bold">我的角色：</h4>
+                            <p class="text-sm text-gray-600">貼圖行銷團隊實習生</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">背景 (Situation)：</h4>
+                            <p class="text-sm text-gray-600">團隊目標是提升 LINE 官方貼圖相關產品的能見度與用戶參與度。</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">執行方法 (Action)：</h4>
+                             <ul class="list-disc list-inside space-y-1 text-sm text-gray-600">
+                                <li><strong>用戶意見分析：</strong> 定期收集用戶回饋，將其質化與量化，用以優化行銷活動切角。</li>
+                                <li><strong>社群內容策略：</strong> 規劃創意內容，獨立製作超過 200 篇推廣貼文，提升用戶互動。</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="project-placeholder">
+                             <p class="p-4">【請在此處放置您的專案圖片】<br>例如：您製作的最成功的IG貼文截圖、<br>或是用戶回饋的分析圖表。</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">成果與學習 (Result)：</h4>
+                            <div class="text-center bg-green-200 p-4 my-2 rounded-lg border-2 border-black">
+                                <p class="text-sm">Instagram 粉絲增長</p>
+                                <p class="text-4xl font-black">+<span id="counter">100</span>% (13K → 27K)</p>
+                            </div>
+                            <p class="text-sm text-gray-600">深刻體會「以用戶為中心」的重要性，並學會將用戶洞察轉化為真實的商業價值。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Slide 5: 專案經驗 (三) | AI Junior Award -->
+        <section class="slide">
+             <div class="window w-full max-w-5xl fade-in-item">
+                <div class="window-header"><span>Competition_AI_Award.exe</span></div>
+                <div class="p-8 grid md:grid-cols-2 gap-8 items-start">
+                    <div class="space-y-4">
+                        <h2 class="text-2xl font-black">AI Junior Award：AI 安心求助，報案無障礙</h2>
+                        <div>
+                            <h4 class="font-bold">專案角色：</h4>
+                            <p class="text-sm text-gray-600">使用者體驗設計與產品規劃</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">背景 (Situation)：</h4>
+                            <p class="text-sm text-gray-600">高達80-90%的性騷擾/性侵受害者因恐懼、自我懷疑等心理壓力而未報案，錯失尋求正義的機會。</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">我們的解法 (Action)：</h4>
+                             <p class="text-sm text-gray-600">打造一款具同理心、高隱私性的 AI 報案助手。透過 RAG 技術與本地化部署，在保護用戶隱私的前提下，引導受害者梳理案情、生成報告書，並提供情緒支持，降低報案門檻。</p>
+                        </div>
+                         <div>
+                            <h4 class="font-bold">成果：</h4>
+                             <p class="text-sm text-gray-600">榮獲 AI EXPO Taiwan 2025 - AI Junior Award **銅獎**。</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="project-placeholder">
+                             <p class="p-4">【請在此處放置您的專案圖片】<br>例如：AI Award 簡報中的<br>「技術架構圖」或「成效驗證」圖表。</p>
+                        </div>
+                        <div class="project-placeholder">
+                             <p class="p-4">【請在此處放置您的獎狀圖片】<br>例如：AI Junior Award 銅獎獎狀。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 6: 專案經驗 (四) | InnoConnect+ -->
+        <section class="slide">
+             <div class="window w-full max-w-5xl fade-in-item">
+                <div class="window-header"><span>Competition_InnoConnect.exe</span></div>
+                <div class="p-8 grid md:grid-cols-2 gap-8 items-start">
+                    <div class="space-y-4">
+                        <h2 class="text-2xl font-black">InnoConnect+：情感串咖啡，連結世代心</h2>
+                        <div>
+                            <h4 class="font-bold">專案角色：</h4>
+                            <p class="text-sm text-gray-600">服務設計研究與產品企劃</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">背景 (Situation)：</h4>
+                            <p class="text-sm text-gray-600">超商的寄杯/送禮服務普遍缺乏情感溫度與儀式感，難以滿足跨世代的情感連結需求。</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">我們的解法 (Action)：</h4>
+                             <p class="text-sm text-gray-600">以萊爾富「來送禮」服務為基礎，提出「萊愛曆」創新服務。透過雙鑽石設計流程，結合使用者訪談與質化分析，設計出整合情感日曆、客製化提醒與社群分享功能的服務，將送禮從單純交易轉化為可回憶的溫馨體驗。</p>
+                        </div>
+                         <div>
+                            <h4 class="font-bold">成果：</h4>
+                             <p class="text-sm text-gray-600">榮獲全國服務創新跨界共創大賽 **InnoConnect+ 特別獎**。</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="project-placeholder">
+                             <p class="p-4">【請在此處放置您的專案圖片】<br>例如：InnoConnect 簡報中的<br>「服務產品原型」或「服務藍圖」。</p>
+                        </div>
+                        <div class="project-placeholder">
+                            <p class="p-4">【請在此處放置您的獎狀/獎項證明】</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 7: 我能如何貢獻 -->
+        <section class="slide">
+            <div class="window w-full max-w-4xl fade-in-item">
+                <div class="window-header"><span>Contribution.md</span></div>
+                <div class="p-8">
+                    <h2 class="text-3xl font-black mb-6 text-center">我能如何貢獻</h2>
+                    <table class="w-full text-left border-2 border-black">
+                        <thead class="bg-gray-100 border-b-2 border-black">
+                            <tr><th class="p-3 font-bold">LINE GO 職位需求</th><th class="p-3 font-bold">我的相關經驗證明</th></tr>
+                        </thead>
+                        <tbody class="divide-y-2 divide-black">
+                            <tr><td class="p-3">PM 產品規格文件整理</td><td class="p-3">熟悉 Figma，能協助 PM 將需求視覺化，製作清晰規格文件。</td></tr>
+                            <tr><td class="p-3">每週彙整 bug 進度 & 釐清問題</td><td class="p-3">具備用戶回饋分析經驗，能快速歸納問題。</td></tr>
+                            <tr><td class="p-3">產品數據週報</td><td class="p-3">在 BenQ 每週使用 Excel 分析 CVR，能快速上手數據週報。</td></tr>
+                            <tr><td class="p-3">跨單位溝通與協調</td><td class="p-3">具備豐富的跨部門協作經驗，能順暢地與各團隊溝通。</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 8: AI 互動問答 -->
+        <section class="slide">
+             <div class="window w-full max-w-2xl h-[85vh] flex flex-col fade-in-item">
+                <div class="window-header">
+                    <span>AI_Resume_Assistant.chat</span>
+                    <div class="window-controls"><div class="window-control bg-yellow-400"></div><div class="window-control bg-green-400"></div><div class="window-control bg-red-400"></div></div>
+                </div>
+                <div class="p-4 flex-grow flex flex-col">
+                    <div id="chat-window" class="flex-grow overflow-y-auto p-2 space-y-4 flex flex-col">
+                         <div class="chat-bubble gemini">你好！我是鈺婷的 AI 履歷助理。請問對我的哪些經歷或技能有興趣呢？</div>
+                    </div>
+                    <div class="mt-4 flex items-center gap-2">
+                        <input type="text" id="chat-input" class="w-full border-2 border-black rounded-full py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="在此輸入您的問題...">
+                        <button id="chat-send" class="bg-blue-500 text-white rounded-full p-2 hover:bg-blue-600 transition-colors disabled:bg-gray-400 border-2 border-black flex-shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 12h14" /></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Slide 9: 結尾 -->
+        <section class="slide">
+            <div class="window w-full max-w-md fade-in-item">
+                <div class="window-header"><span>Question</span></div>
+                <div class="p-10 text-center">
+                    <p class="text-2xl font-bold mb-6">THANK YOU!<br>DO YOU WANT TO HIRE ME?</p>
+                    <div class="flex justify-center gap-4">
+                        <button class="bg-blue-500 text-white font-bold py-3 px-10 border-2 border-black rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">YES</button>
+                        <button class="bg-gray-200 text-black font-bold py-3 px-10 border-2 border-black rounded-lg hover:bg-gray-300">NO</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 導航按鈕 -->
+    <div id="navigation-controls" class="fixed bottom-6 right-6 flex items-center space-x-2">
+        <button id="prevBtn" class="w-14 h-14 rounded-lg text-black bg-white border-2 border-black hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-[4px_4px_0px_#000]">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
+        </button>
+        <div id="slide-counter" class="text-lg font-bold text-white bg-black px-4 py-3 rounded-lg">1 / 9</div>
+        <button id="nextBtn" class="w-14 h-14 rounded-lg text-black bg-white border-2 border-black hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-[4px_4px_0px_#000]">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+        </button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const slideCounter = document.getElementById('slide-counter');
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+            let counterAnimated = false;
+
+            const chatWindow = document.getElementById('chat-window');
+            const chatInput = document.getElementById('chat-input');
+            const chatSendBtn = document.getElementById('chat-send');
+
+            function showSlide(index) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                slides[index].classList.add('active');
+                slideCounter.textContent = `${index + 1} / ${totalSlides}`;
+                prevBtn.disabled = index === 0;
+                nextBtn.disabled = index === totalSlides - 1;
+
+                if (slides[index].querySelector('#counter') && !counterAnimated) {
+                    animateCounter();
+                    counterAnimated = true;
+                }
+            }
+
+            function animateCounter() {
+                const counterElement = document.getElementById('counter');
+                let count = 0;
+                const target = 100;
+                const duration = 1500;
+                const stepTime = Math.abs(Math.floor(duration / target));
+                const timer = setInterval(() => {
+                    count++;
+                    counterElement.textContent = count;
+                    if (count >= target) clearInterval(timer);
+                }, stepTime);
+            }
+
+            function goToNextSlide() { if (currentSlide < totalSlides - 1) showSlide(++currentSlide); }
+            function goToPrevSlide() { if (currentSlide > 0) showSlide(--currentSlide); }
+
+            prevBtn.addEventListener('click', goToPrevSlide);
+            nextBtn.addEventListener('click', goToNextSlide);
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight') goToNextSlide();
+                else if (e.key === 'ArrowLeft') goToPrevSlide();
+            });
+
+            const resumeContext = `傅鈺婷 (Tina Fu) 的履歷與專案摘要：學歷：國立政治大學 數位內容與科技碩士 (2024.09~2026.06), 輔仁大學 應用美術系 視覺傳達組 (畢業, GPA: 3.93/4.0). 實習經歷：1. BenQ APAC - 電商與數位行銷實習生 (2024.06-2025.01). 核心職責：規劃執行電子商務行銷活動，協調新品上架與庫存管理。關鍵技能：主動發現問題，為提升效率開發網頁爬蟲，並善用AI工具；使用Excel (VLOOKUP, 樞紐分析表) 分析購買轉換率(CVR)、活動績效。主要成就：成功提升馬新市場的購買轉換率，優化跨部門協作流程。 2. LINE Taiwan - 貼圖行銷團隊實習生 (2022.09-2024.04). 核心職責：規劃行銷活動，管理官方社群，進行市場分析。關鍵技能：用戶回饋分析，社群內容策略。主要成就：將官方 Instagram 追蹤數從 13K 提升至 27K (增長超過100%)，製作超過200篇貼文。 競賽專案： 1. AI Junior Award (銅獎): 專案名為「AI 安心求助，報案無障礙」。為解決性騷擾/性侵受害者報案率低的社會問題，規劃一款具同理心、高隱私性的 AI 報案助手。運用 RAG 技術與本地化部署，引導受害者梳理案情、生成報告書，並提供情緒支持。 2. InnoConnect+ (特別獎): 專案名為「情感串咖啡，連結世代心」。為解決超商送禮服務缺乏情感溫度的問題，以萊爾富「來送禮」為基礎提出「萊愛曆」創新服務。透過雙鑽石設計流程與使用者訪談，設計出整合情感日曆、客製化提醒與社群分享功能的服務。 其他技能：語言(TOEIC 815), 工具(Figma, Google Analytics, Adobe Suite), 程式(Python, Javascript).`;
+
+            async function callGeminiAPI(prompt) {
+                const fullPrompt = `${resumeContext}\n\n你是一位專業且熱情的 AI 履歷助理，代表傅鈺婷本人。你的任務是根據以上提供的履歷與專案摘要，只能使用這些資訊來回答問題。請用親切、自信的第一人稱口吻（例如：在我於...的實習中，我負責...）來回答。如果問題超出資訊範圍，請委婉地表示：「這個問題超出我目前能回答的範圍，但在面試中我很樂意親自與您分享更多細節。」\n\n面試官的問題是：「${prompt}」\n\n你的回答：`;
+                chatSendBtn.disabled = true;
+                chatInput.disabled = true;
+                addMessageToChat('loading');
+                try {
+                    const apiKey = "";
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+                    const payload = { contents: [{ role: "user", parts: [{ text: fullPrompt }] }] };
+                    const response = await fetch(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+                    
+                    const loadingElement = document.querySelector('.loading-dots')?.parentElement;
+
+                    if (!response.ok) {
+                        const errorBody = await response.text();
+                        console.error("API Error Response:", errorBody);
+                        throw new Error(`API call failed with status: ${response.status}`);
+                    }
+                    
+                    const result = await response.json();
+                    
+                    if(loadingElement) loadingElement.remove();
+
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        const text = result.candidates[0].content.parts[0].text;
+                        addMessageToChat(text.trim(), 'gemini');
+                    } else {
+                        console.error("Unexpected API response structure:", result);
+                        addMessageToChat('抱歉，我現在無法回答，請稍後再試。', 'gemini');
+                    }
+                } catch (error) {
+                    console.error("Gemini API Error:", error);
+                    const loadingElement = document.querySelector('.loading-dots')?.parentElement;
+                    if (loadingElement) loadingElement.remove();
+                    addMessageToChat('抱歉，連線時發生錯誤，請檢查您的網路或稍後再試。', 'gemini');
+                } finally {
+                    chatSendBtn.disabled = false;
+                    chatInput.disabled = false;
+                    chatInput.focus();
+                }
+            }
+            
+            function addMessageToChat(text, sender = 'user') {
+                const bubble = document.createElement('div');
+                bubble.className = 'chat-bubble';
+                if (sender === 'loading') {
+                    bubble.classList.add('gemini');
+                    bubble.innerHTML = `<div class="loading-dots"><span></span><span></span><span></span></div>`;
+                } else if (sender === 'user') {
+                    bubble.classList.add('user');
+                    bubble.textContent = text;
+                } else {
+                    bubble.classList.add('gemini');
+                    bubble.textContent = text;
+                }
+                chatWindow.appendChild(bubble);
+                chatWindow.scrollTop = chatWindow.scrollHeight;
+            }
+
+            chatSendBtn.addEventListener('click', () => {
+                const userText = chatInput.value.trim();
+                if (userText) {
+                    addMessageToChat(userText, 'user');
+                    callGeminiAPI(userText);
+                    chatInput.value = '';
+                }
+            });
+            chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') chatSendBtn.click(); });
+            showSlide(0);
+        });
+    </script>
+</body>
+</html>
