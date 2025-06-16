@@ -1,29 +1,60 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>傅鈺婷 (Tina Fu) - LINE GO 產品實習生應徵簡報 (故事版)</title>
+    <title>傅鈺婷 (Tina Fu) - 應徵 LINE GO 產品實習生</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Inter:wght@400;700;900&display=swap"
+        rel="stylesheet">
     <style>
-        /* 自定義樣式和動畫 */
+        @keyframes animated-gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Custom styles and animations */
+        :root {
+            --brand-green: #00B900;
+        }
+
         body {
             font-family: 'Inter', 'Noto Sans TC', sans-serif;
             overflow: hidden;
-            background-color: #3C5BFF;
+            background: linear-gradient(135deg, #96fbc4, #f9f586, #96fbc4);
+            background-size: 400% 400%;
+            animation: animated-gradient 20s ease infinite;
         }
 
-        /* 投影片容器 */
+        /* Slide container */
         .slide {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            padding: 2rem;
-            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            /* Reduced padding for smaller screens */
+            transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
             opacity: 0;
-            transform: scale(0.95);
+            transform: scale(0.98);
             pointer-events: none;
         }
 
@@ -32,360 +63,970 @@
             transform: scale(1);
             pointer-events: auto;
         }
-        
-        /* 元素淡入動畫 */
+
+        /* Fade-in animation for elements */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
+
         .fade-in-item {
             animation: fadeIn 0.7s ease-out forwards;
             opacity: 0;
         }
-        
-        /* 視窗樣式 */
+
+        /* Window style */
         .window {
             background-color: white;
             border: 2px solid #000;
             box-shadow: 6px 6px 0px #000;
             border-radius: 8px;
             overflow: hidden;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
         }
+
+        .no-scroll .window-content {
+            overflow-y: hidden;
+        }
+
         .window-header {
-            background-color: #3C5BFF;
+            background-color: var(--brand-green);
             color: white;
             padding: 0.5rem 1rem;
             font-weight: 700;
             border-bottom: 2px solid #000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-shrink: 0;
         }
-        .window-controls { display: flex; gap: 0.5rem; }
-        .window-control { width: 14px; height: 14px; border: 2px solid #000; border-radius: 50%; }
-        
-        /* AI Chat 樣式 */
-        #chat-window { scrollbar-width: none; -ms-overflow-style: none; }
-        #chat-window::-webkit-scrollbar { display: none; }
-        .chat-bubble { max-width: 85%; padding: 0.75rem 1rem; border-radius: 1rem; }
-        .chat-bubble.user { background-color: #3C5BFF; color: white; align-self: flex-end;}
-        .chat-bubble.gemini { background-color: #F3F4F6; color: #1F2937; align-self: flex-start; }
-        
-        /* 專案圖片/影片占位符 */
-        .project-placeholder {
+
+        .window-content {
+            padding: 1.5rem;
+            /* Consistent padding */
+            overflow-y: auto;
+        }
+
+        /* Content styles */
+        .slide-title {
+            color: #111;
+            font-size: 2.2em;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        .slide-subtitle {
+            font-size: 1.6em;
+            color: #343a40;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        .content {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .content ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .content li {
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%2300B900" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>') no-repeat left center;
+            background-size: 18px;
+            padding-left: 35px;
+            margin-bottom: 18px;
+        }
+
+        .resume-list-bulleted li {
+            position: relative;
+            padding-left: 1rem;
+            list-style: none;
+        }
+
+        .resume-list-bulleted li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            top: 0.1em;
+            color: var(--brand-green);
+            font-weight: 900;
+        }
+
+        .custom-bullet {
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .custom-bullet::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            top: 0.1em;
+            color: var(--brand-green);
+            font-weight: 900;
+        }
+
+        .highlight {
+            color: var(--brand-green);
+            font-weight: 700;
+            background-color: #e6f8e6;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .quote {
+            border-left: 4px solid var(--brand-green);
+            padding-left: 15px;
+            margin: 20px 0;
+            color: #555;
+        }
+
+        .quote-italic {
+            font-style: italic;
+        }
+
+        .final-cta {
+            background-color: var(--brand-green);
+            color: #fff;
+            text-align: center;
+            padding: 12px 24px;
+            border-radius: 8px;
+            margin-top: 25px;
+            font-weight: 700;
+            display: inline-block;
+            text-decoration: none;
+            border: 2px solid #000;
+            box-shadow: 4px 4px 0px #000;
+            transition: all 0.2s ease;
+        }
+
+        .final-cta:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #000;
+        }
+
+        .portfolio-section {
+            display: flex;
+            gap: 30px;
+            margin-top: 20px;
+            align-items: flex-start;
+        }
+
+        .portfolio-text {
+            flex: 2;
+            /* Give text more space */
+        }
+
+        .portfolio-visual {
+            flex: 1;
+            text-align: center;
+        }
+
+        .portfolio-philosophy {
+            flex: 1.5;
+            /* A bit more space for the philosophy section */
+        }
+
+        .portfolio-visual img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 2px solid #000;
+            cursor: zoom-in;
+        }
+
+        .canva-embed,
+        .video-embed {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            /* 16:9 Aspect Ratio */
+            box-shadow: 0 2px 8px 0 rgba(63, 69, 81, 0.16);
+            overflow: hidden;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+        }
+
+        .canva-embed iframe,
+        .video-embed iframe {
+            position: absolute;
             width: 100%;
             height: 100%;
-            min-height: 200px;
-            border-radius: 4px;
+            top: 0;
+            left: 0;
+            border: none;
+        }
+
+        .portfolio-caption {
+            font-size: 0.85em;
+            color: #6c757d;
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 5px;
+            bottom: 5px;
+            width: 2px;
+            background-color: #e2e8f0;
+        }
+
+        .timeline-item {
+            position: relative;
+        }
+
+        .timeline-item:not(:last-child) {
+            margin-bottom: 1rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -1.7rem;
+            top: 0.25rem;
+            height: 14px;
+            width: 14px;
+            background-color: var(--brand-green);
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+
+        /* New Navigation Styles */
+        #navigation-container {
+            position: fixed;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 700px;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            z-index: 100;
+        }
+
+        .nav-button {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            background-color: white;
+            border: 2px solid black;
             display: flex;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            overflow: hidden;
-            background-color: #f0f0f0; /* 作為圖片載入前的底色 */
-        }
-        .project-placeholder img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain; /* 改為 contain 以完整顯示圖片 */
-        }
-        .video-container {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            height: 0;
-            border: 2px solid black;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+            box-shadow: 4px 4px 0px #000;
+            color: black;
         }
 
-        .loading-dots span {
-            animation: blink 1.4s infinite both;
-            height: 8px; width: 8px; background-color: #9ca3af;
-            display: inline-block; border-radius: 50%;
+        .nav-button:hover:not(:disabled) {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #000;
         }
-        .loading-dots span:nth-child(2) { animation-delay: 0.2s; }
-        .loading-dots span:nth-child(3) { animation-delay: 0.4s; }
-        @keyframes blink { 0% { opacity: 0.2; } 20% { opacity: 1; } 100% { opacity: 0.2; } }
+
+        .nav-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        #progress-bar-container {
+            position: relative;
+            width: 100%;
+            flex-grow: 1;
+        }
+
+        #progress-bar-wrapper {
+            position: relative;
+            width: 100%;
+            height: 2.5rem;
+            /* Taller for easier interaction */
+            display: flex;
+            align-items: center;
+        }
+
+        #progress-bar-bg {
+            position: absolute;
+            width: 100%;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #progress-bar-fill {
+            height: 100%;
+            width: 0%;
+            background-color: var(--brand-green);
+            border-radius: 5px;
+            transition: width 0.3s ease;
+        }
+
+        #progress-dots-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            pointer-events: none;
+        }
+
+        .progress-dot {
+            width: 16px;
+            height: 16px;
+            background-color: white;
+            border: 2px solid #000;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            z-index: 1;
+        }
+
+        .progress-dot:hover {
+            transform: scale(1.3);
+        }
+
+        .progress-dot.active {
+            background-color: var(--brand-green);
+            transform: scale(1.4);
+        }
+
+        #slide-tooltip {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.65);
+            color: #fff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 60px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s, visibility 0.2s;
+            white-space: nowrap;
+            margin-bottom: 0.75rem;
+            /* Space between dot and tooltip */
+            pointer-events: none;
+        }
+
+        #slide-counter {
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+            flex-shrink: 0;
+        }
+
+
+        @media (max-width: 900px) {
+
+            /* Adjusted breakpoint */
+            .window-content {
+                padding: 1rem;
+            }
+
+            .slide-title {
+                font-size: 1.8em;
+            }
+
+            .portfolio-section,
+            .resume-grid {
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
+
 <body class="text-black">
 
     <div id="presentation-container" class="relative w-full h-screen">
-        <!-- Slide 1: 封面頁 -->
-        <section class="slide active">
+        <!-- Slide 1: Cover Page -->
+        <section class="slide active" data-title="封面">
             <div class="text-center text-white">
-                <div class="inline-block bg-white text-black p-4 border-4 border-black shadow-[8px_8px_0px_#000] fade-in-item">
-                    <h1 class="text-5xl md:text-8xl font-black">PORTFOLIO.|</h1>
+                <div
+                    class="inline-block bg-white text-black p-4 border-4 border-black shadow-[8px_8px_0px_#000] fade-in-item">
+                    <h1 class="text-5xl md:text-8xl font-black"> Tina Fu.|</h1>
                 </div>
-                <p class="mt-8 text-xl font-bold fade-in-item" style="animation-delay: 0.2s;">傅鈺婷 (Tina Fu) | 產品實習生應徵簡報</p>
+                <p class="mt-8 text-xl font-bold fade-in-item" style="animation-delay: 0.2s;">傅鈺婷 | 產品實習生應徵簡報</p>
             </div>
         </section>
-        
-        <!-- Slide 2: 個人檔案 -->
-        <section class="slide">
-            <div class="window w-full max-w-4xl fade-in-item">
-                <div class="window-header"><span>Profile.txt</span></div>
-                <div class="p-8 grid md:grid-cols-3 gap-8">
-                    <div class="md:col-span-1 text-center">
-                        <svg class="w-32 h-32 mx-auto mb-4" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="48" stroke="black" stroke-width="4"/><path d="M50 68C50 68 62.6387 62.4331 70.8193 68.8073C78.7397 75.0002 82 78 82 78" stroke="black" stroke-width="4" stroke-linecap="round"/><path d="M50 68C50 68 37.3613 62.4331 29.1807 68.8073C21.2603 75.0002 18 78 18 78" stroke="black" stroke-width="4" stroke-linecap="round"/><path d="M69.5 44C69.5 46.4853 67.4853 48.5 65 48.5C62.5147 48.5 60.5 46.4853 60.5 44C60.5 41.5147 62.5147 39.5 65 39.5C67.4853 39.5 69.5 41.5147 69.5 44Z" fill="black"/><path d="M39.5 44C39.5 46.4853 37.4853 48.5 35 48.5C32.5147 48.5 30.5 46.4853 30.5 44C30.5 41.5147 32.5147 39.5 35 39.5C37.4853 39.5 39.5 41.5147 39.5 44Z" fill="black"/><path d="M35 83C41.0423 88.0837 58.9577 88.0837 65 83" stroke="black" stroke-width="4" stroke-linecap="round"/><path d="M50 68V83" stroke="black" stroke-width="4" stroke-linecap="round"/></svg>
-                        <h2 class="text-2xl font-bold">傅鈺婷</h2>
-                        <p class="text-gray-600">Tina Fu</p>
-                    </div>
-                    <div class="md:col-span-2">
-                        <h3 class="font-bold text-xl mb-4">關於我</h3>
-                        <p class="mb-6">我是鈺婷，一位數據與使用者並重的產品實踐者。具備在大型跨國團隊的協作經驗，擅長從數據與使用者回饋中洞察機會點，並透過專案管理能力將其化為具體成果。</p>
-                        <h3 class="font-bold text-xl mb-4">核心能力</h3>
-                        <div class="space-y-3">
-                            <p><strong>數據驅動的專案管理：</strong> 熟悉 Excel 數據分析，能有效協調跨部門團隊。</p>
-                            <p><strong>用戶導向的策略規劃：</strong> 擅長收集分析用戶回饋，轉化為行銷與產品策略。</p>
-                            <p><strong>高效的跨團隊溝通：</strong> 擁有在 BenQ 與 LINE 等企業的豐富協作經驗。</p>
-                        </div>
+
+        <!-- Slide 2: The Starting Point -->
+        <section class="slide" data-title="故事的起點">
+            <div class="window w-full max-w-3xl fade-in-item">
+                <div class="window-header">start.md</div>
+                <div class="window-content">
+                    <h2 class="slide-title" style="color:var(--brand-green);">故事的起點：為何是「PM」？</h2>
+                    <div class="content">
+                        <p>我的旅程橫跨了<span class="highlight">設計、行銷與數據分析</span>。在這些領域的交會點，我找到了最大的熱情：打造能真正觸動人心、解決問題的產品。</p>
+                        <p>我享受的，是從 0 到 1 的過程中，<span
+                                class="highlight">挖掘使用者需求、定義問題、並與團隊協作共創價值的過程</span>。這份熱情，驅使我走向「產品管理」這條路。</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Slide 3: 專案經驗 (一) | BenQ (詳細版) -->
-        <section class="slide">
+        <!-- Slide 3: About Me -->
+        <section class="slide" data-title="關於我">
             <div class="window w-full max-w-5xl fade-in-item">
-                <div class="window-header"><span>Project_BenQ.exe</span></div>
-                <div class="p-8 grid md:grid-cols-2 gap-8 items-start">
-                    <div class="space-y-4">
-                        <h2 class="text-2xl font-black">BenQ：從數據到決策的電商營運</h2>
-                        <div>
-                            <h4 class="font-bold">我的角色：</h4>
-                            <p class="text-sm text-gray-600">亞太區電商與數位行銷實習生</p>
-                        </div>
-                        <div>
-                            <h4 class="font-bold">背景 (Situation)：</h4>
-                            <p class="text-sm text-gray-600">面對亞太區複雜市場，需同步管理新品上架、行銷活動，並提升銷售表現。</p>
-                        </div>
-                        <div>
-                            <h4 class="font-bold">執行方法 (Action)：</h4>
-                             <ul class="list-disc list-inside space-y-1 text-sm text-gray-600">
-                                <li><strong>主動優化：</strong> 為提升效率，主動開發網頁爬蟲程式自動抓取資訊，並善用 AI 工具處理繁瑣任務。</li>
-                                <li><strong>數據分析：</strong> 使用 Excel (VLOOKUP, 樞紐分析) 分析CVR與活動績效，提供可行性洞察。</li>
-                                <li><strong>流程管理：</strong> 建立跨團隊溝通管道，管理新品上架時程。</li>
+                <div class="window-header">About_Tina.md</div>
+                <div class="window-content">
+                    <h2 class="slide-title" style="color:var(--brand-green);">關於我：一位熱愛打造產品的跨域整合者</h2>
+                    <div class="portfolio-section">
+                        <div class="portfolio-text content">
+                            <p>我是一位遊走於<span class="highlight">設計</span>、<span class="highlight">行銷</span>與<span
+                                    class="highlight">數據</span>之間的產品人。我相信最好的產品來自於對人性的深刻洞察與跨領域的協作。我享受拆解複雜問題，並透過清晰的邏輯與團隊共創，將想法一步步化為現實。
+                            </p>
+                            <h3 class="font-bold flex items-center mt-4 mb-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                </svg>
+                                專業技能 (Skills)
+                            </h3>
+                            <ul class="content">
+                                <li><strong>設計與原型:</strong> Figma, Photoshop, Illustrator, After Effects</li>
+                                <li><strong>數據與行銷:</strong> Google Analytics, Excel (樞紐分析), CVR 分析</li>
+                                <li><strong>程式語言:</strong> Python, JavaScript</li>
                             </ul>
                         </div>
-                    </div>
-                    <div class="space-y-4">
-                        <div class="project-placeholder">
-                             <img src="https://raw.githubusercontent.com/i0c0i/tina-linego-portfolio/main/images/benqspecextraction.png" alt="BenQ 爬蟲專案示意圖">
-                        </div>
-                        <div>
-                            <h4 class="font-bold">成果與學習 (Result)：</h4>
-                             <ul class="list-disc list-inside space-y-1 text-sm text-gray-600">
-                                <li>成功提升馬來西亞與新加坡市場購買轉換率。</li>
-                                <li>優化跨國、跨部門的專案協作流程。</li>
-                                <li>學習到如何從繁瑣工作中發現問題，並利用技術工具解決，而不只是被動接受任務。</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Slide 4: 專案經驗 (二) | LINE (詳細版) -->
-        <section class="slide">
-             <div class="window w-full max-w-5xl fade-in-item">
-                <div class="window-header"><span>Project_LINE.exe</span></div>
-                <div class="p-8 grid md:grid-cols-2 gap-8 items-start">
-                    <div class="space-y-4">
-                        <h2 class="text-2xl font-black">LINE：從用戶到增長的社群實踐</h2>
-                        <div>
-                            <h4 class="font-bold">我的角色：</h4>
-                            <p class="text-sm text-gray-600">貼圖行銷團隊實習生</p>
-                        </div>
-                        <div>
-                            <h4 class="font-bold">背景 (Situation)：</h4>
-                            <p class="text-sm text-gray-600">團隊目標是提升 LINE 官方貼圖相關產品的能見度與用戶參與度，並透過多元行銷活動提升銷售。</p>
-                        </div>
-                        <div>
-                            <h4 class="font-bold">執行方法 (Action)：</h4>
-                             <ul class="list-disc list-inside space-y-1 text-sm text-gray-600">
-                                <li><strong>內容與活動企劃：</strong> 規劃並執行「主編精選」、星座系列等行銷主題，設計 OAP 內容以提升用戶互動與點擊率。</li>
-                                <li><strong>社群內容經營：</strong> 製作超過 200 則貼文、迷因、資訊圖表及 Reels 短影音，並管理 LINE 所有社群平台。</li>
-                                <li><strong>使用者洞察與優化：</strong> 收集用戶回饋並進行個案分析，追蹤活動成效，並持續優化行銷策略以提升瀏覽、銷售與留存。</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="space-y-4">
-                        <div class="project-placeholder">
-                            <p class="p-4">【請在此處放置您的專案圖片】<br>例如：您作品集中的 OAP 內容、<br>社群貼文或 Reels 短影音截圖。</p>
-                        </div>
-                        <div>
-                            <h4 class="font-bold">成果與學習 (Result)：</h4>
-                            <div class="text-center bg-green-200 p-4 my-2 rounded-lg border-2 border-black">
-                                <p class="text-sm">Instagram 粉絲數增長</p>
-                                <p class="text-4xl font-black">+<span id="counter">100</span>% (13K → 27K)</p>
+                        <div class="portfolio-philosophy content">
+                            <h3 class="font-bold flex items-center mb-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                                  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                                </svg>
+                                我的工作哲學
+                            </h3>
+                            <div class="quote" style="border-left-color: #10b981;">
+                                <p class="font-semibold">以用戶為核心，以數據為依歸</p>
+                                <p class="text-sm">我習慣從用戶回饋與數據洞察中尋找機會點，確保產品的每一步都走在正確的道路上。</p>
                             </div>
-                             <p class="text-sm text-gray-600">深刻體會「以用戶為中心」的重要性，並學習到如何透過數據追蹤與質化回饋，制定有效的內容策略，並為產品帶來真實的商業價值。</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Slide 5: 專案經驗 (三) | AI Junior Award -->
-        <section class="slide">
-             <div class="window w-full max-w-5xl fade-in-item">
-                <div class="window-header"><span>Competition_AI_Award.exe</span></div>
-                <div class="p-8 grid md:grid-cols-2 gap-8 items-start">
-                    <div class="space-y-4">
-                        <h2 class="text-2xl font-black">AI Junior Award：AI 安心求助</h2>
-                        <div>
-                            <h4 class="font-bold">專案角色：</h4>
-                            <p class="text-sm text-gray-600">使用者體驗設計與產品規劃</p>
-                        </div>
-                        <div>
-                            <h4 class="font-bold">背景 (Situation)：</h4>
-                            <p class="text-sm text-gray-600">高達80-90%的性騷擾/性侵受害者因恐懼、自我懷疑等心理壓力而未報案，錯失尋求正義的機會。</p>
-                        </div>
-                        <div>
-                            <h4 class="font-bold">我們的解法 (Action)：</h4>
-                             <p class="text-sm text-gray-600">打造一款具同理心、高隱私性的 AI 報案助手。透過 RAG 技術與本地化部署，在保護用戶隱私的前提下，引導受害者梳理案情、生成報告書，並提供情緒支持，降低報案門檻。</p>
-                        </div>
-                         <div>
-                            <h4 class="font-bold">成果：</h4>
-                             <p class="text-sm text-gray-600">榮獲 AI EXPO Taiwan 2025 - AI Junior Award **銅獎**。</p>
-                        </div>
-                    </div>
-                    <div class="space-y-4">
-                        <div class="project-placeholder">
-                             <img src="https://storage.googleapis.com/gemini-prod-us-east1-9d29f339-385a-4933-a360-3f4354c4a5f3/1.jpg" alt="AI Award 專案主視覺">
-                        </div>
-                        <div class="project-placeholder">
-                             <img src="https://storage.googleapis.com/gemini-prod-us-east1-9d29f339-385a-4933-a360-3f4354c4a5f3/35.jpg" alt="AI Award 預期效益圖">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Slide 6: 專案經驗 (三) | AI Junior Award Demo -->
-        <section class="slide">
-             <div class="window w-full max-w-4xl fade-in-item">
-                <div class="window-header"><span>Demo_Video.mp4</span></div>
-                 <div class="p-8">
-                     <h2 class="text-2xl font-black mb-4 text-center">專案 Demo 影片</h2>
-                     <div class="video-container">
-                        <!-- 請將下方的 src 換成您的 YouTube 影片嵌入連結 -->
-                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                     </div>
-                 </div>
-            </div>
-        </section>
-
-        <!-- Slide 7: 專案經驗 (四) | InnoConnect+ -->
-        <section class="slide">
-             <div class="window w-full max-w-5xl fade-in-item">
-                <div class="window-header"><span>Competition_InnoConnect.exe</span></div>
-                <div class="p-8 grid md:grid-cols-2 gap-8 items-start">
-                    <div class="space-y-4">
-                        <h2 class="text-2xl font-black">InnoConnect+：情感串咖啡</h2>
-                        <div>
-                            <h4 class="font-bold">專案角色：</h4>
-                            <p class="text-sm text-gray-600">服務設計研究與產品企劃</p>
-                        </div>
-                        <div>
-                            <h4 class="font-bold">背景 (Situation)：</h4>
-                            <p class="text-sm text-gray-600">超商的寄杯/送禮服務普遍缺乏情感溫度與儀式感，難以滿足跨世代的情感連結需求。</p>
-                        </div>
-                        <div>
-                            <h4 class="font-bold">我們的解法 (Action)：</h4>
-                             <p class="text-sm text-gray-600">以萊爾富「來送禮」為基礎，提出「萊愛曆」創新服務概念。透過雙鑽石設計流程與使用者訪談，規劃整合「預約送禮」、「心情手札」、「一鍵炫耀」與多媒體卡片等功能的產品原型，將送禮從單純交易轉化為可回憶的溫馨體驗。</p>
-                        </div>
-                         <div>
-                            <h4 class="font-bold">成果：</h4>
-                             <p class="text-sm text-gray-600">榮獲全國服務創新跨界共創大賽 **InnoConnect+ 特別獎**。</p>
-                        </div>
-                    </div>
-                    <div class="space-y-4">
-                        <div class="project-placeholder">
-                             <p class="p-4">【請在此處放置您的專案圖片】<br>例如：您提供的「萊愛曆」<br>服務原型 UI 截圖。</p>
-                        </div>
-                        <div class="project-placeholder">
-                            <p class="p-4">【請在此處放置您的專案圖片】<br>例如：您提供的「利害關係人圖」。</p>
+                            <div class="quote" style="border-left-color: #3b82f6;">
+                                <p class="font-semibold">主動溝通，透明協作</p>
+                                <p class="text-sm">我相信順暢的溝通是專案成功的基石。我樂於擔任團隊間的橋樑，對齊目標、化解歧見。</p>
+                            </div>
+                            <div class="quote" style="border-left-color:#f59e0b;">
+                                <p class="font-semibold">從0到1，再從1到100</p>
+                                <p class="text-sm">無論是發想創新概念，還是優化現有流程，我都抱持著高度的熱情與執行力，追求卓越。</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Slide 8: 我能如何貢獻 -->
-        <section class="slide">
+        <!-- Slide 4: One-Page Resume -->
+        <section class="slide no-scroll" data-title="個人簡歷">
+            <div class="window w-full max-w-6xl fade-in-item">
+                <div class="window-header">Resume_for_LINE_GO.pdf</div>
+                <div class="window-content text-sm md:text-base">
+                    <div class="flex flex-col md:flex-row gap-6 resume-grid">
+                        <!-- Left Column -->
+                        <div
+                            class="w-full md:w-2/5 text-center border-r-0 md:border-r-2 border-gray-100 pr-0 md:pr-6 space-y-4">
+                            <div class="flex justify-center">
+                                <img src="https://raw.githubusercontent.com/i0c0i/tina-linego-portfolio/main/images/tinaprofile.png"
+                                    alt="Tina Fu Profile Picture"
+                                    class="w-28 h-28 rounded-full border-2 border-black object-cover">
+                            </div>
+                            <h2 class="text-xl font-black text-center">傅鈺婷 (Tina Fu)</h2>
+                            <p class="text-gray-600 text-sm leading-relaxed text-left">熱衷於打造優質產品的跨域人才，具備<span
+                                    class="font-bold text-green-600">用戶洞察</span>、<span
+                                    class="font-bold text-green-600">數據分析</span>與<span
+                                    class="font-bold text-green-600">跨團隊協作</span>能力，渴望在快速迭代的環境中貢獻價值。</p>
+                            <div class="flex flex-wrap justify-center gap-2 pt-1">
+                                <span
+                                    class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-1 rounded-full">#主動解決問題</span>
+                                <span
+                                    class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-1 rounded-full">#細心追根究底</span>
+                                <span
+                                    class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-2.5 py-1 rounded-full">#樂於學習</span>
+                            </div>
+                            <div class="text-left pt-3">
+                                <h3 class="font-bold text-base text-gray-800 border-b-2 border-gray-200 pb-1 mb-2">核心能力
+                                    (Core Competencies)</h3>
+                                <div class="space-y-3 text-sm">
+                                    <div class="custom-bullet">
+                                        <p class="font-bold text-gray-700">產品規劃與用戶洞察</p>
+                                        <p class="text-gray-600">
+                                            <strong>用戶洞察與產品定義：</strong>擅長整合<strong
+                                                class="highlight">質化、量化數據</strong>，從中提煉使用者洞察、定義核心問題。能將抽象的需求轉化為清晰的<strong
+                                                class="highlight">功能流程圖 (Flowchart)</strong> 與<strong
+                                                class="highlight">互動原型 (Prototype)</strong>，有效對齊團隊共識，作為開發的基礎。
+                                        </p>
+                                    </div>
+                                    <div class="custom-bullet">
+                                        <p class="font-bold text-gray-700">數據分析與決策</p>
+                                        <p class="text-gray-600">能運用 Excel/GA 分析數據、製作<strong
+                                                class="highlight">數據週報</strong>，並將洞察轉化為可行的<strong
+                                                class="highlight">產品優化建議</strong>。</p>
+                                    </div>
+                                    <div class="custom-bullet">
+                                        <p class="font-bold text-gray-700">專案推進與協作</p>
+                                        <p class="text-gray-600">擁有豐富的<strong
+                                                class="highlight">跨部門溝通</strong>經驗，能有效控管<strong
+                                                class="highlight">專案時程</strong>，確保產品順利迭代。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Column -->
+                        <div class="w-full md:w-3/5 space-y-3 text-sm">
+                            <div>
+                                <h3
+                                    class="font-bold text-base text-gray-800 border-b-2 border-gray-300 pb-1 mb-2 flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-500"
+                                        viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd"
+                                            d="M10 2a2 2 0 00-2 2v1.5a.5.5 0 01-1 0V4a3 3 0 013-3h.5a3 3 0 013 3v1.5a.5.5 0 01-1 0V4a2 2 0 00-2-2h-.5z"
+                                            clip-rule="evenodd" />
+                                        <path
+                                            d="M4.5 5.5A.5.5 0 005 6v1.5a.5.5 0 001 0V6a.5.5 0 00-.5-.5h-1zM14.5 5.5A.5.5 0 0015 6v1.5a.5.5 0 001 0V6a.5.5 0 00-.5-.5h-1z" />
+                                        <path fill-rule="evenodd"
+                                            d="M2 10a1 1 0 011-1h14a1 1 0 110 2H3a1 1 0 01-1-1zm1 3a1 1 0 100 2h12a1 1 0 100-2H3z"
+                                            clip-rule="evenodd" />
+                                    </svg>實習經歷 (Internship Experience)
+                                </h3>
+                                <div class="timeline mt-2">
+                                    <div class="timeline-item">
+                                        <div class="timeline-dot"></div>
+                                        <div class="flex justify-between items-baseline">
+                                            <h4 class="font-bold">BenQ APAC - 電商與數位行銷</h4>
+                                            <p class="text-xs text-gray-500">2024.06 - 2025.01</p>
+                                        </div>
+                                        <ul class="resume-list-bulleted text-gray-600 mt-1">
+                                            <li class="pb-1"><strong
+                                                    class="font-bold">專案時程管理</strong>：負責馬來西亞、新加坡市場新品上架，透過時程控管與跨團隊協作，確保順利發布。
+                                            </li>
+                                            <li class="pb-1"><strong class="font-bold">數據週報製作</strong>：每週分析
+                                                CVR與成效數據，提出優化建議，並製作<strong class="highlight">數據週報</strong>供團隊決策。</li>
+                                            <li class="pb-1"><strong class="font-bold">問題解決</strong>：<strong
+                                                    class="highlight">主動開發Python 爬蟲</strong>，將規格收集流程自動化，提升團隊效率。</li>
+                                        </ul>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-dot"></div>
+                                        <div class="flex justify-between items-baseline">
+                                            <h4 class="font-bold">LINE Taiwan - 貼圖行銷</h4>
+                                            <p class="text-xs text-gray-500">2022.09 - 2024.04</p>
+                                        </div>
+                                        <ul class="resume-list-bulleted text-gray-600 mt-1">
+                                            <li class="pb-1"><strong
+                                                    class="font-bold">用戶回饋分析</strong>：每日監測與分析社群回饋，彙整潛在問題與<strong
+                                                    class="highlight">Bug</strong>，並提出產品優化建議。</li>
+                                            <li class="pb-1"><strong class="font-bold">內容策略與用戶增長</strong>：製作超過 200
+                                                篇官方內容，將多元主題的內容產品特色轉化為用戶語言。參與社群貼文發想與製作，成功帶動 <strong class="highlight">IG
+                                                    粉絲數成長 100%</strong>。</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pt-2">
+                                <h3
+                                    class="font-bold text-base text-gray-800 border-b-2 border-gray-300 pb-1 mb-2 flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-500"
+                                        viewBox="0 0 20 20" fill="currentColor">
+                                        <path
+                                            d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.998.998 0 011.07 0l3-1.25a1 1 0 011.07 0l3 1.25a1 1 0 011.07 0l2.625-.93a1 1 0 000-1.84l-7-3zM3.25 9.497l5 2.083a1 1 0 00.912 0l5-2.083A.997.997 0 0117 9.5V13a1 1 0 11-2 0v-2.19l-3 1.25a1 1 0 01-1.07 0l-3-1.25V13a1 1 0 11-2 0V9.5a.997.997 0 01.25-.653z" />
+                                        <path d="M3 13.5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" />
+                                    </svg>學歷 (Education)
+                                </h3>
+                                <div class="timeline mt-2">
+                                    <div class="timeline-item">
+                                        <div class="timeline-dot"></div>
+                                        <p class="text-gray-700"><strong>國立政治大學</strong> | 數位內容與科技 碩士 (2024 - 2026)</p>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-dot"></div>
+                                        <p class="text-gray-700"><strong>天主教輔仁大學</strong> | 應用美術學系 學士 (2019 - 2023)</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pt-2">
+                                <h3
+                                    class="font-bold text-base text-gray-800 border-b-2 border-gray-300 pb-1 mb-2 flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-500"
+                                        viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd"
+                                            d="M11.3 2.05c.56.28.87.89.71 1.45l-1.35 4.5a1.002 1.002 0 001.64 1.1l3.3-2.93a1 1 0 011.4 1.42l-3.3 2.93a1 1 0 00-.14 1.55l3.3 2.93a1 1 0 01-1.4 1.42l-3.3-2.93a1 1 0 00-1.55.14l-1.35 4.5a1 1 0 01-1.45.71c-1.22-.61-2.45-1.23-3.68-1.84a.998.998 0 01-.6-1.52l1.35-4.5a1 1 0 00-1.64-1.1l-3.3 2.93a1 1 0 01-1.4-1.42l3.3-2.93a1 1 0 00.14-1.55L2.1 6.35a1 1 0 011.4-1.42l3.3 2.93a1 1 0 001.55-.14l1.35-4.5c.16-.56.77-.87 1.45-.71 1.22.61 2.45 1.23 3.68 1.84z"
+                                            clip-rule="evenodd" />
+                                    </svg>個人專案與獎項 (Projects & Awards)
+                                </h3>
+                                <div class="space-y-1 mt-2">
+                                    <p class="text-gray-600 custom-bullet"><strong>AI EXPO Taiwan 銅獎</strong>：<strong
+                                            class="highlight">主導「AI 報案助手」專案的 UX 流程與介面設計</strong>，解決受害者核心痛點。</p>
+                                    <p class="text-gray-600 custom-bullet"><strong>InnoConnect+
+                                            特別獎</strong>：在與萊爾富的合作案中<strong
+                                            class="highlight">擔任使用者研究員，透過服務設計</strong>為傳統送禮體驗賦予溫度。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 5: Experience 1 - LINE -->
+        <section class="slide" data-title="LINE 實習經驗">
+            <div class="window w-full max-w-5xl fade-in-item">
+                <div class="window-header">Project_LINE.exe</div>
+                <div class="window-content">
+                    <h2 class="slide-title" style="color:var(--brand-green);">第一站：在 LINE，我學會傾聽百萬用戶</h2>
+                    <div class="portfolio-section">
+                        <div class="portfolio-text content">
+                            <p>在 LINE 貼圖行銷團隊，我不只是一位實習生，我更是一位「用戶情緒的觀察家」，學習與大規模使用者對話。</p>
+                            <ul>
+                                <li><strong>內容傳遞價值：</strong> 製作超過 200
+                                    篇官方帳號貼文，我學習如何將產品特色（如新貼圖、新主題）轉化為吸引人的內容，直接對百萬用戶溝通產品價值，這是產品上市（Go-to-Market）中重要的一環。</li>
+                                <li><strong>數據洞察人心：</strong> 透過社群觀察與分析，參與社群經營，成功讓 Instagram 粉絲數增長 100% (從 13K 到 27K)。
+                                </li>
+                                <li><strong>用戶聲音為本：</strong> 我主動收集並分析用戶反饋，並協助團隊進行市場與競品分析，我相信好的產品來自於對用戶需求的深刻理解。</li>
+                            </ul>
+                        </div>
+                        <div class="portfolio-visual">
+                            <img class="zoomable-image"
+                                src="https://raw.githubusercontent.com/i0c0i/tina-linego-portfolio/main/images/linereels.png"
+                                alt="LINE 專案成果">
+                            <p class="portfolio-caption">
+                                <strong>專案成果示例：</strong>分析後台數據，發現教學型內容成效佳，因此規劃系列短影音，成功提升用戶參與度與粉絲數。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 6: Experience 2 - BenQ -->
+        <section class="slide" data-title="BenQ 實習經驗">
+            <div class="window w-full max-w-5xl fade-in-item">
+                <div class="window-header">Project_BenQ.exe</div>
+                <div class="window-content">
+                    <h2 class="slide-title" style="color:var(--brand-green);">第二站：在 BenQ，我學會打造產品骨架</h2>
+                    <div class="portfolio-section">
+                        <div class="portfolio-text content">
+                            <p>如果說在 LINE 的經驗是學習產品的「血肉」，那麼在 BenQ 的電商實習，則是讓我學會如何打造產品的「骨架」。</p>
+                            <ul>
+                                <li><strong>產品規格與流程：</strong> 我負責協調新品上架與庫存管理，熟悉了從規格確認、跨部門溝通到最終上線的完整產品流程。</li>
+                                <li><strong>數據驅動決策：</strong> 我運用 Excel 分析購買轉換率 (CVR)，將數字轉化為優化業績的建議。</li>
+                                <li><strong>跨團隊協作：</strong> 我與行銷、供應鏈和技術團隊緊密合作，解決專案問題，確保產品順利推進。</li>
+                            </ul>
+                        </div>
+                        <div class="portfolio-visual">
+                            <div class="video-embed">
+                                <iframe src="https://www.youtube.com/embed/CHoeON-WSaE" title="YouTube video player"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
+                            <p class="portfolio-caption">
+                                <strong>專案成果示例：</strong>為解決團隊重複性的手動資料整理流程，我主動開發網頁爬蟲將規格收集任務自動化，此為實際操作影片，展現顯著提升團隊工作效率的成果。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 7: Project - Proactive Problem Solving 1 -->
+        <section class="slide" data-title="專案：AI 安心求助">
+            <div class="window w-full max-w-5xl fade-in-item">
+                <div class="window-header">Competition_AI_Award.exe</div>
+                <div class="window-content">
+                    <h2 class="slide-title" style="color:var(--brand-green);">從被動執行到主動解決問題 (1)</h2>
+                    <div class="portfolio-section">
+                        <div class="portfolio-text content">
+                            <p><strong>發現問題：</strong><br>面對性騷擾/性侵害，<span class="highlight">高達 9
+                                    成的受害者因恐懼與自我懷疑選擇沉默</span>。他們需要的不是催促，而是一個安全、能同理他們的出口。</p>
+                            <p><strong>我的貢獻與角色：</strong><br> 在這個獲獎專案中，我擔任了核心的<span class="highlight">產品設計與開發</span>角色。
+                                我不只負責使用者體驗設計，將同理心融入介面流程；更負責前端，將設計稿化為可互動的實際產品。
+                                這段從 0 到 1 的經驗，讓我<span class="highlight">以PM的視角</span>進行溝通：對設計師，我能用工程可行性來討論；
+                                對工程師，我能用使用者流程來闡述需求。這使我成為設計與工程之間的有效橋樑，確保最終產品能符合規格與使用者期待。
+                            </p>
+                            <div class="quote quote-italic" style="border-left-color: var(--brand-green);">
+                                <p>「它不會對我評價、一直逼我說，而是一步一步引導我...不再是一個人面對的感覺。」</p>
+                                <p style="text-align: right; font-weight: 500;">— 專案使用者回饋</p>
+                            </div>
+                        </div>
+                        <div class="portfolio-visual">
+                            <div class="canva-embed">
+                                <iframe loading="lazy"
+                                    style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+                                    src="https://www.canva.com/design/DAGqCeFBjSA/0fKP-_LNWP_M9DC04p8oyQ/view?embed"
+                                    allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
+                            </div>
+                            <p class="portfolio-caption"><strong>專案成果：</strong>以「AI安心求助，報案無障礙」榮獲 <strong>AI EXPO Taiwan
+                                    2025 - AI Junior Award 銅獎</strong>。此為專案完整簡報。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 8: Project - Proactive Problem Solving 2 -->
+        <section class="slide" data-title="專案：萊愛曆">
+            <div class="window w-full max-w-5xl fade-in-item">
+                <div class="window-header">Competition_InnoConnect.exe</div>
+                <div class="window-content">
+                    <h2 class="slide-title" style="color:var(--brand-green);">從被動執行到主動解決問題 (2)</h2>
+                    <div class="portfolio-section">
+                        <div class="portfolio-text content">
+                            <p><strong>發現問題：</strong><br>現有的超商線上送禮服務，多半停留在「交易」層面，<span
+                                    class="highlight">缺乏能傳遞情感的溫度</span>，也難以創造送禮者與收禮者之間的後續互動。</p>
+                            <p><strong>我的貢獻與角色：</strong><br> 在這個與萊爾富合作的專案中，我擔任<span
+                                    class="highlight">使用者研究與服務設計</span>的角色。透過使用者訪談與既有服務分析，我們提出了「萊愛曆」的創新服務，將送禮與數位日曆結合，讓每一次心意都能被記錄與回顧。
+                            </p>
+                            <div class="quote quote-italic">
+                                <p>「我們的目標，是讓送禮從一次性的行為，轉化為可以隨時回味的溫暖記憶。」</p>
+                                <p style="text-align: right;">— 團隊提案核心理念</p>
+                            </div>
+                        </div>
+                        <div class="portfolio-visual">
+                            <img class="zoomable-image"
+                                src="https://raw.githubusercontent.com/i0c0i/tina-linego-portfolio/main/images/hilifeinno.png"
+                                alt="萊愛曆 App 服務原型">
+                            <p class="portfolio-caption"><strong>專案成果：</strong>以「萊愛曆」服務創新提案，榮獲 <strong>2024 InnoConnect+
+                                    全國服務創新跨界共創大賽 特別獎</strong>。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 9: Project Showcase 1 -->
+        <section class="slide no-scroll" data-title="專案：冰齊靈">
+            <div class="window w-full max-w-6xl fade-in-item">
+                <div class="window-header">Project_Showcase_1.md</div>
+                <div class="window-content">
+                    <h2 class="slide-title text-center"
+                        style="color:var(--brand-green); font-size: 1.8em; margin-bottom: 1rem;">從 0 到 1 的產品實踐 (1)</h2>
+                    <!-- Main container: Stacks text above visuals -->
+                    <div class="flex flex-col gap-4">
+                        <!-- Text div (takes full width) -->
+                        <div class="w-full text-sm space-y-3">
+                            <h3 class="font-bold text-lg">專案一：冰齊靈 (AISCREAM) - 智慧冰箱管家</h3>
+                            <p class="text-gray-600 custom-bullet"><strong class="font-bold">問題定義：</strong>
+                                許多家庭常因<span
+                                    class="highlight">忘記冰箱有什麼</span>而重複購買或讓食材過期，造成金錢與食物的雙重浪費。傳統的人工記錄方式既耗時又不便，難以持續。</p>
+                            <p class="text-gray-600 custom-bullet"><strong class="font-bold">解決方案：</strong>
+                                我們提出「冰齊靈」App，透過
+                                AI影像辨識技術，自動建立冰箱庫存清單。使用者只需拍照，系統便能辨識食材、預估期限，並在食材快過期時主動推播提醒。此外，系統還能根據現有庫存，智慧推薦食譜，最大化食材利用率。
+                            </p>
+                            <p class="text-gray-600 custom-bullet"><strong class="font-bold">我的貢獻：</strong>
+                                在這個專案中，我負責<span class="highlight">使用者場景的發想與功能規劃</span>。我將抽象的 AI 技術，轉化為貼近主婦、租屋族等目標客群的具體
+                                App
+                                流程，從「拍照辨識」到「到期提醒」，<span class="highlight">確保產品能真正解決使用者的生活痛點</span>。</p>
+                        </div>
+                        <!-- Visuals container (side-by-side on medium screens) -->
+                        <div class="flex flex-col md:flex-row gap-6 items-center justify-center">
+                            <!-- A4 Image div -->
+                            <div class="flex-shrink-0">
+                                <img class="zoomable-image" img
+                                    src="https://raw.githubusercontent.com/i0c0i/tina-linego-portfolio/main/images/aiscream.png"
+                                    alt="AISCREAM Project A4 Showcase"
+                                    class="object-contain rounded-md border-2 border-gray-200 shadow-lg"
+                                    style="max-height: 45vh;">
+                            </div>
+                            <!-- Canva div -->
+                            <div class="w-full flex-1" style="max-width: 40rem;">
+                                <div class="canva-embed w-full" style="padding-top: 56.25%;">
+                                    <iframe loading="lazy"
+                                        style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+                                        src="https://www.canva.com/design/DAGqiOOYICw/lLiJUP8mVFWEoyJUlap8qg/view?embed"
+                                        allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 10: Project Showcase 2 -->
+        <section class="slide no-scroll" data-title="專案：政需要你">
+            <div class="window w-full max-w-6xl fade-in-item">
+                <div class="window-header">Project_Showcase_2.md</div>
+                <div class="window-content">
+                    <h2 class="slide-title text-center"
+                        style="color:var(--brand-green); font-size: 1.8em; margin-bottom: 1rem;">從 0 到 1 的產品實踐 (2)</h2>
+                    <!-- Main container: Stacks text above visuals -->
+                    <div class="flex flex-col gap-4">
+                        <!-- Text div (takes full width) -->
+                        <div class="w-full text-sm space-y-3">
+                            <h3 class="font-bold text-lg">專案二：政(朕)需要你 - 校園人力互助平台</h3>
+                            <p class="text-gray-600 custom-bullet"><strong class="ont-bold">問題定義：</strong>
+                                校園內的師生常有臨時性、零碎的互助需求（如：搬重物、問卷調查），但缺乏一個兼具效率、信任與趣味性的媒合管道。</p>
+                            <p class="text-gray-600 custom-bullet"><strong class="font-bold">解決方案：</strong>
+                                我們設計了一個以倉鼠吉祥物「朕鼠」為核心的任務平台。透過幽默的品牌語言與遊戲化的互動設計，讓使用者在發布與接受任務時，能感受到樂趣與成就感，從而提升平台的黏著度與社群的活絡度。
+                            </p>
+                            <p class="text-gray-600 custom-bullet"><strong class="font-bold">我的貢獻：</strong>
+                                在此專案中，我主要負責<span class="highlight">使用者體驗與品牌聲音 (Tone of Voice) 的塑造</span>。
+                                從吉祥物「朕鼠」的角色故事，到「聖旨已發出」、「朕愛鼠你了」等互動文案，再到整體介面的視覺風格，我們致力於創造一個有溫度、讓人會心一笑的社群平台。</p>
+                        </div>
+                        <!-- Visuals container (side-by-side on medium screens) -->
+                        <div class="flex flex-col md:flex-row gap-6 items-center justify-center">
+                            <!-- A4 Image div -->
+                            <div class="flex-shrink-0">
+                                <img class="zoomable-image"
+                                    src="https://raw.githubusercontent.com/i0c0i/tina-linego-portfolio/main/images/helpster.png"
+                                    alt="Helpster Project A4 Showcase"
+                                    class="object-contain rounded-md border-2 border-gray-200 shadow-lg"
+                                    style="max-height: 45vh;">
+                            </div>
+                            <!-- Canva div -->
+                            <div class="w-full flex-1" style="max-width: 40rem;">
+                                <div class="canva-embed w-full" style="padding-top: 56.25%;">
+                                    <iframe loading="lazy"
+                                        style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+                                        src="https://www.canva.com/design/DAGqjLlHmeI/khxRSlaqqM2J8ww8og2xvg/view?embed"
+                                        allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 11: Project Management Skills -->
+        <section class="slide" data-title="專案管理實踐">
+            <div class="window w-full max-w-5xl fade-in-item">
+                <div class="window-header">From_Idea_to_Reality.md</div>
+                <div class="window-content">
+                    <h2 class="slide-title" style="color:var(--brand-green);">從想法到實現：我的專案管理實踐</h2>
+                    <div class="content">
+                        <p>對我而言，一個好的產品不僅源於好的想法，更仰賴扎實的規劃與執行。我習慣將專案拆解為清晰的階段，以確保想法能順利落地。</p>
+                        <ul>
+                            <li><strong>想法實現 (Idea to Reality)：</strong> 我善於從社會痛點 (如 AI 報案助手) 或生活需求 (如萊愛曆)
+                                中發掘機會，並將其轉化為具體的產品概念。我不只等待任務，我主動尋找並創造價值。</li>
+                            <li><strong>規劃與範圍管理 (Planning & Scope)：</strong>
+                                在專案前期，我會透過使用者研究與團隊討論，定義產品的核心功能與範圍。例如，在競賽專案中，我們明確了 MVP (最小可行產品) 的功能，以確保在有限時間內能交付核心價值。
+                            </li>
+                            <li><strong>執行與進度控管 (Execution & Control)：</strong> 在 BenQ
+                                的實習中，我負責協調新品上架的時程，需要與其他部門確認細節、對齊進度；在開發爬蟲時，我也為自己設定了明確的開發里程碑，以確保專案能如期完成並解決團隊問題。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 12: How I Can Contribute -->
+        <section class="slide" data-title="我能如何貢獻">
             <div class="window w-full max-w-4xl fade-in-item">
                 <div class="window-header"><span>Contribution.md</span></div>
-                <div class="p-8">
+                <div class="p-4 sm:p-8">
                     <h2 class="text-3xl font-black mb-6 text-center">我能如何貢獻</h2>
-                    <table class="w-full text-left border-2 border-black">
-                        <thead class="bg-gray-100 border-b-2 border-black">
-                            <tr><th class="p-3 font-bold">LINE GO 職位需求</th><th class="p-3 font-bold">我的相關經驗證明</th></tr>
-                        </thead>
-                        <tbody class="divide-y-2 divide-black">
-                            <tr><td class="p-3">PM 產品規格文件整理</td><td class="p-3">熟悉 Figma，能協助 PM 將需求視覺化，製作清晰規格文件。</td></tr>
-                            <tr><td class="p-3">每週彙整 bug 進度 & 釐清問題</td><td class="p-3">具備用戶回饋分析經驗，能快速歸納問題。</td></tr>
-                            <tr><td class="p-3">產品數據週報</td><td class="p-3">在 BenQ 每週使用 Excel 分析 CVR，能快速上手數據週報。</td></tr>
-                            <tr><td class="p-3">跨單位溝通與協調</td><td class="p-3">具備豐富的跨部門協作經驗，能順暢地與各團隊溝通。</td></tr>
-                        </tbody>
-                    </table>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left table-auto">
+                            <thead class="border-b-2 border-black">
+                                <tr>
+                                    <th class="p-3 text-sm font-bold text-gray-600 uppercase tracking-wider w-5/12">LINE
+                                        GO 職位需求</th>
+                                    <th class="p-3 w-1/12"></th>
+                                    <th class="p-3 text-sm font-bold text-gray-600 uppercase tracking-wider w-6/12">
+                                        我的相關經驗證明</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-gray-200 hover:bg-gray-50 transition-colors">
+                                    <td class="p-4 font-semibold align-top">PM 產品規格文件整理</td>
+                                    <td class="p-4 text-center text-green-500 font-bold text-2xl align-top">→</td>
+                                    <td class="p-4 text-gray-700">熟悉 Figma，能協助 PM 將需求視覺化 (如 AI 專案)，製作清晰易懂的 Wireframe
+                                        與規格文件。</td>
+                                </tr>
+                                <tr class="bg-gray-50 border-b border-gray-200 hover:bg-gray-100 transition-colors">
+                                    <td class="p-4 font-semibold align-top">每週彙整 bug 進度 & 釐清問題</td>
+                                    <td class="p-4 text-center text-green-500 font-bold text-2xl align-top">→</td>
+                                    <td class="p-4 text-gray-700">具備用戶回饋分析經驗 (LINE 社群)，能快速歸納問題、判斷優先級，協助釐清 bug 重現路徑。</td>
+                                </tr>
+                                <tr class="border-b border-gray-200 hover:bg-gray-50 transition-colors">
+                                    <td class="p-4 font-semibold align-top">產品數據週報</td>
+                                    <td class="p-4 text-center text-green-500 font-bold text-2xl align-top">→</td>
+                                    <td class="p-4 text-gray-700">在 BenQ 每週使用 Excel 分析 CVR，能將數據轉化為洞察，快速上手數據週報的製作與呈現。
+                                    </td>
+                                </tr>
+                                <tr class="bg-gray-50 hover:bg-gray-100 transition-colors">
+                                    <td class="p-4 font-semibold align-top">跨單位溝通與協調</td>
+                                    <td class="p-4 text-center text-green-500 font-bold text-2xl align-top">→</td>
+                                    <td class="p-4 text-gray-700">具備豐富的跨部門協作經驗 (BenQ, 競賽專案)，能順暢地與工程、行銷等團隊溝通對齊目標。</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Slide 9: AI 互動問答 -->
-        <section class="slide">
-             <div class="window w-full max-w-2xl h-[85vh] flex flex-col fade-in-item">
-                <div class="window-header">
-                    <span>AI_Resume_Assistant.chat</span>
-                    <div class="window-controls"><div class="window-control bg-yellow-400"></div><div class="window-control bg-green-400"></div><div class="window-control bg-red-400"></div></div>
-                </div>
-                <div class="p-4 flex-grow flex flex-col">
-                    <div id="chat-window" class="flex-grow overflow-y-auto p-2 space-y-4 flex flex-col">
-                         <div class="chat-bubble gemini">你好！我是鈺婷的 AI 履歷助理。請問對我的哪些經歷或技能有興趣呢？</div>
-                    </div>
-                    <div class="mt-4 flex items-center gap-2">
-                        <input type="text" id="chat-input" class="w-full border-2 border-black rounded-full py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="在此輸入您的問題...">
-                        <button id="chat-send" class="bg-blue-500 text-white rounded-full p-2 hover:bg-blue-600 transition-colors disabled:bg-gray-400 border-2 border-black flex-shrink-0">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 12h14" /></svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Slide 10: 結尾 -->
-        <section class="slide">
-            <div class="window w-full max-w-md fade-in-item">
-                <div class="window-header"><span>Question</span></div>
-                <div class="p-10 text-center">
-                    <p class="text-2xl font-bold mb-6">THANK YOU!<br>DO YOU WANT TO HIRE ME?</p>
-                    <div class="flex justify-center gap-4">
-                        <button class="bg-blue-500 text-white font-bold py-3 px-10 border-2 border-black rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">YES</button>
-                        <button class="bg-gray-200 text-black font-bold py-3 px-10 border-2 border-black rounded-lg hover:bg-gray-300">NO</button>
+        <!-- Slide 13: Conclusion and CTA -->
+        <section class="slide" data-title="結論">
+            <div class="window w-full max-w-3xl fade-in-item">
+                <div class="window-content text-center">
+                    <h2 class="slide-title" style="color:var(--brand-green);">我的能力拼圖，已準備好貢獻 LINE GO</h2>
+                    <div class="content">
+                        <p class="text-left">回顧我的旅程，我累積的能力，正能對應 LINE GO 產品實習生的需求。我已準備好將這份熱情與能力投入，期待能有機會進入下一關面試，進行更深入的交流。
+                        </p>
+                        <a href="https://tinafu.framer.website" target="_blank" class="final-cta">
+                            點此查看我的更多作品集
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
     </div>
 
-    <!-- 導航按鈕 -->
-    <div id="navigation-controls" class="fixed bottom-6 right-6 flex items-center space-x-2">
-        <button id="prevBtn" class="w-14 h-14 rounded-lg text-black bg-white border-2 border-black hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-[4px_4px_0px_#000]">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
+    <!-- Lightbox Modal for Image Zoom -->
+    <div id="lightbox"
+        class="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center p-4 z-50 hidden cursor-zoom-out">
+        <img id="lightbox-img" src="" alt="放大的專案圖片"
+            class="object-contain rounded-lg shadow-2xl max-w-[85vw] max-h-[85vh] cursor-default">
+        <button id="close-lightbox" class="absolute top-6 right-6 text-white text-5xl font-bold">×</button>
+    </div>
+
+    <!-- New Navigation Controls -->
+    <div id="navigation-container">
+        <button id="prevBtn" class="nav-button">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" stroke-width="3">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
         </button>
-        <div id="slide-counter" class="text-lg font-bold text-white bg-black px-4 py-3 rounded-lg">1 / 10</div>
-        <button id="nextBtn" class="w-14 h-14 rounded-lg text-black bg-white border-2 border-black hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-[4px_4px_0px_#000]">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+
+        <div id="progress-bar-container">
+            <div id="progress-bar-wrapper">
+                <div id="progress-bar-bg">
+                    <div id="progress-bar-fill"></div>
+                </div>
+                <div id="progress-dots-container"></div>
+                <div id="slide-tooltip"></div>
+            </div>
+        </div>
+
+        <div id="slide-counter">1 / 13</div>
+
+        <button id="nextBtn" class="nav-button">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" stroke-width="3">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
         </button>
     </div>
 
@@ -395,124 +1036,122 @@
             const prevBtn = document.getElementById('prevBtn');
             const nextBtn = document.getElementById('nextBtn');
             const slideCounter = document.getElementById('slide-counter');
+            const progressBarFill = document.getElementById('progress-bar-fill');
+            const progressBarBg = document.getElementById('progress-bar-bg');
+            const dotsContainer = document.getElementById('progress-dots-container');
+            const tooltip = document.getElementById('slide-tooltip');
             let currentSlide = 0;
             const totalSlides = slides.length;
-            let counterAnimated = false;
 
-            const chatWindow = document.getElementById('chat-window');
-            const chatInput = document.getElementById('chat-input');
-            const chatSendBtn = document.getElementById('chat-send');
+            // --- Lightbox Functionality ---
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const closeLightboxBtn = document.getElementById('close-lightbox');
+            document.querySelectorAll('.zoomable-image').forEach(image => {
+                image.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (lightbox && lightboxImg) {
+                        lightboxImg.src = image.src;
+                        lightbox.classList.remove('hidden');
+                    }
+                });
+            });
+            const closeLightbox = () => lightbox && lightbox.classList.add('hidden');
+            if (lightbox) lightbox.addEventListener('click', closeLightbox);
+            if (closeLightboxBtn) closeLightboxBtn.addEventListener('click', closeLightbox);
+            if (lightboxImg) lightboxImg.addEventListener('click', e => e.stopPropagation());
+
+            // --- New Navigation Logic ---
+            function updateNav() {
+                // Update progress bar
+                progressBarFill.style.width = `${(currentSlide / (totalSlides - 1)) * 100}%`;
+
+                // Update dots
+                document.querySelectorAll('.progress-dot').forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentSlide);
+                });
+
+                // Update counter
+                slideCounter.textContent = `${currentSlide + 1} / ${totalSlides}`;
+
+                // Update buttons
+                prevBtn.disabled = currentSlide === 0;
+                nextBtn.disabled = currentSlide === totalSlides - 1;
+            }
 
             function showSlide(index) {
-                slides.forEach(slide => slide.classList.remove('active'));
-                slides[index].classList.add('active');
-                slideCounter.textContent = `${index + 1} / ${totalSlides}`;
-                prevBtn.disabled = index === 0;
-                nextBtn.disabled = index === totalSlides - 1;
-
-                if (slides[index].querySelector('#counter') && !counterAnimated) {
-                    animateCounter();
-                    counterAnimated = true;
-                }
+                if (index < 0 || index >= totalSlides) return;
+                currentSlide = index;
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle('active', i === index);
+                });
+                updateNav();
             }
 
-            function animateCounter() {
-                const counterElement = document.getElementById('counter');
-                let count = 0;
-                const target = 100;
-                const duration = 1500;
-                const stepTime = Math.abs(Math.floor(duration / target));
-                const timer = setInterval(() => {
-                    count++;
-                    counterElement.textContent = count;
-                    if (count >= target) clearInterval(timer);
-                }, stepTime);
+            // Create dots
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'progress-dot';
+                dot.dataset.slide = i;
+                dot.dataset.title = slides[i].dataset.title || `投影片 ${i + 1}`;
+                dot.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    showSlide(i);
+                });
+                dotsContainer.appendChild(dot);
             }
 
-            function goToNextSlide() { if (currentSlide < totalSlides - 1) showSlide(++currentSlide); }
-            function goToPrevSlide() { if (currentSlide > 0) showSlide(--currentSlide); }
+            // Tooltip logic
+            progressBarBg.addEventListener('mousemove', (e) => {
+                const rect = progressBarBg.getBoundingClientRect();
+                const hoverPercent = (e.clientX - rect.left) / rect.width;
+                const slideIndex = Math.round(hoverPercent * (totalSlides - 1));
+                const targetDot = dotsContainer.children[slideIndex];
+                if (!targetDot) return;
 
+                const dotRect = targetDot.getBoundingClientRect();
+                const containerRect = document.getElementById('progress-bar-container').getBoundingClientRect();
+
+                tooltip.style.opacity = '1';
+                tooltip.style.visibility = 'visible';
+                tooltip.textContent = targetDot.dataset.title;
+                // Position tooltip relative to the progress bar container
+                tooltip.style.left = `${dotRect.left - containerRect.left + dotRect.width / 2}px`;
+            });
+
+            progressBarBg.addEventListener('mouseleave', () => {
+                tooltip.style.opacity = '0';
+                tooltip.style.visibility = 'hidden';
+            });
+
+            progressBarBg.addEventListener('click', (e) => {
+                const rect = progressBarBg.getBoundingClientRect();
+                const clickPercent = (e.clientX - rect.left) / rect.width;
+                const slideIndex = Math.round(clickPercent * (totalSlides - 1));
+                showSlide(slideIndex);
+            });
+
+            // Button controls
+            const goToNextSlide = () => showSlide(currentSlide + 1);
+            const goToPrevSlide = () => showSlide(currentSlide - 1);
             prevBtn.addEventListener('click', goToPrevSlide);
             nextBtn.addEventListener('click', goToNextSlide);
+
+            // Keyboard controls
             document.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowRight') goToNextSlide();
-                else if (e.key === 'ArrowLeft') goToPrevSlide();
-            });
-
-            const resumeContext = `傅鈺婷 (Tina Fu) 的履歷與專案摘要：學歷：國立政治大學 數位內容與科技碩士 (2024.09~2026.06), 輔仁大學 應用美術系 視覺傳達組 (畢業, GPA: 3.93/4.0). 實習經歷：1. BenQ APAC - 電商與數位行銷實習生 (2024.06-2025.01). 核心職責：規劃執行電子商務行銷活動，協調新品上架與庫存管理。關鍵技能：主動發現問題，為提升效率開發網頁爬蟲，並善用AI工具；使用Excel (VLOOKUP, 樞紐分析表) 分析購買轉換率(CVR)、活動績效。主要成就：成功提升馬新市場的購買轉換率，優化跨部門協作流程。 2. LINE Taiwan - 貼圖行銷團隊實習生 (2022.09-2024.04). 核心職責：規劃與執行「主編精選」、星座系列等行銷主題，設計 OAP 內容，管理所有社群平台並製作超過200則貼文、迷因、資訊圖表與Reels短影音。關鍵技能：用戶回饋質化與量化分析，數據追蹤，並根據成效優化行銷策略以提升瀏覽、銷售與留存。主要成就：將官方 Instagram 追蹤數從 13K 提升至 27K (增長超過100%)。 競賽專案： 1. AI Junior Award (銅獎): 專案名為「AI 安心求助，報案無障礙」。為解決性騷擾/性侵受害者報案率低的社會問題，規劃一款具同理心、高隱私性的 AI 報案助手。運用 RAG 技術與本地化部署，引導受害者梳理案情、生成報告書，並提供情緒支持。 2. InnoConnect+ (特別獎): 專案名為「情感串咖啡，連結世代心」。為解決超商送禮服務缺乏情感溫度的問題，以萊爾富「來送禮」為基礎提出「萊愛曆」創新服務概念。透過雙鑽石設計流程與使用者訪談，規劃整合「預約送禮」、「心情手札」、「一鍵炫耀」與多媒體卡片等功能的產品原型。 其他技能：語言(TOEIC 815), 工具(Figma, Google Analytics, Adobe Suite), 程式(Python, Javascript).`;
-
-            async function callGeminiAPI(prompt) {
-                const fullPrompt = `${resumeContext}\n\n你是一位專業且熱情的 AI 履歷助理，代表傅鈺婷本人。你的任務是根據以上提供的履歷與專案摘要，只能使用這些資訊來回答問題。請用親切、自信的第一人稱口吻（例如：在我於...的實習中，我負責...）來回答。如果問題超出資訊範圍，請委婉地表示：「這個問題超出我目前能回答的範圍，但在面試中我很樂意親自與您分享更多細節。」\n\n面試官的問題是：「${prompt}」\n\n你的回答：`;
-                chatSendBtn.disabled = true;
-                chatInput.disabled = true;
-                addMessageToChat('loading');
-                try {
-                    const apiKey = "";
-                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-                    const payload = { contents: [{ role: "user", parts: [{ text: fullPrompt }] }] };
-                    const response = await fetch(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
-                    
-                    const loadingElement = document.querySelector('.loading-dots')?.parentElement;
-
-                    if (!response.ok) {
-                        const errorBody = await response.text();
-                        console.error("API Error Response:", errorBody);
-                        throw new Error(`API call failed with status: ${response.status}`);
-                    }
-                    
-                    const result = await response.json();
-                    
-                    if(loadingElement) loadingElement.remove();
-
-                    if (result.candidates && result.candidates.length > 0 &&
-                        result.candidates[0].content && result.candidates[0].content.parts &&
-                        result.candidates[0].content.parts.length > 0) {
-                        const text = result.candidates[0].content.parts[0].text;
-                        addMessageToChat(text.trim(), 'gemini');
-                    } else {
-                        console.error("Unexpected API response structure:", result);
-                        addMessageToChat('抱歉，我現在無法回答，請稍後再試。', 'gemini');
-                    }
-                } catch (error) {
-                    console.error("Gemini API Error:", error);
-                    const loadingElement = document.querySelector('.loading-dots')?.parentElement;
-                    if (loadingElement) loadingElement.remove();
-                    addMessageToChat('抱歉，連線時發生錯誤，請檢查您的網路或稍後再試。', 'gemini');
-                } finally {
-                    chatSendBtn.disabled = false;
-                    chatInput.disabled = false;
-                    chatInput.focus();
-                }
-            }
-            
-            function addMessageToChat(text, sender = 'user') {
-                const bubble = document.createElement('div');
-                bubble.className = 'chat-bubble';
-                if (sender === 'loading') {
-                    bubble.classList.add('gemini');
-                    bubble.innerHTML = `<div class="loading-dots"><span></span><span></span><span></span></div>`;
-                } else if (sender === 'user') {
-                    bubble.classList.add('user');
-                    bubble.textContent = text;
-                } else {
-                    bubble.classList.add('gemini');
-                    bubble.textContent = text;
-                }
-                chatWindow.appendChild(bubble);
-                chatWindow.scrollTop = chatWindow.scrollHeight;
-            }
-
-            chatSendBtn.addEventListener('click', () => {
-                const userText = chatInput.value.trim();
-                if (userText) {
-                    addMessageToChat(userText, 'user');
-                    callGeminiAPI(userText);
-                    chatInput.value = '';
+                if (!lightbox.classList.contains('hidden')) return;
+                if (e.key === 'ArrowRight' || e.key === ' ') {
+                    e.preventDefault();
+                    goToNextSlide();
+                } else if (e.key === 'ArrowLeft') {
+                    goToPrevSlide();
                 }
             });
-            chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') chatSendBtn.click(); });
+
+            // Initial setup
             showSlide(0);
         });
     </script>
 </body>
+
 </html>
